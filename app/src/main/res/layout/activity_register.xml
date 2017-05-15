@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hackfest_bismaoperation.com.hackfest_bismaoperation.Activity.RegisterActivity"
-    android:background="#87CEFA">
+    android:background='@drawable/bg1'>
 
 
     <android.support.design.widget.TextInputLayout
