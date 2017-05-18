@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">HackFest_BismaOperation</string>
     <string name="title_activity_detil_guru">DetilGuruActivity</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="toolbar_title">Profil</string>
 </resources>

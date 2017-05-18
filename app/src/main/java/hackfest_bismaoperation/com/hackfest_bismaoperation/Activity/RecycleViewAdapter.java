@@ -36,11 +36,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
 
     }
 
-
-
-
-
-
     @Override
     public void onBindViewHolder(GuruHolder holder, int position) {
         final Guru guru = listGuru.get(position);

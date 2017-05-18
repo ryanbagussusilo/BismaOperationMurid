@@ -1,11 +1,15 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -31,7 +35,19 @@ public class ListGuruActivity extends AppCompatActivity {
     private RestClient.GitApiInterface service;
 
     private ArrayList<Guru> GuruItems = new ArrayList<Guru>();
-    private int id;
+    private String id;
+    private String namadepan;
+    private String namabelakang;
+    private String tempatlahir;
+    private String tanggallahir;
+    private String jeniskelamin;
+    private String nomortlp;
+    private String emailmurid;
+    private String alamatmurid;
+
+
+
+
     private static int idmurid1;
 
     public static int getIdmurid1() {
@@ -55,9 +71,55 @@ public class ListGuruActivity extends AppCompatActivity {
         adapter = new RecycleViewAdapter(ListGuruActivity.this, GuruItems);
         rvView.setAdapter(adapter);
         fetchData();
-       // Bundle b=getIntent().getExtras();
-//        id=b.getInt("idmurid");
-//        setIdmurid1(b.getInt("idmurid"));
+
+        Bundle b=getIntent().getExtras();
+        id=b.getString("idmurid");
+        namadepan=b.getString("namadepan");
+        namabelakang=b.getString("namabelakang");
+        tempatlahir=b.getString("tempatlahir");
+        tanggallahir=b.getString("tanggallahir");
+        jeniskelamin=b.getString("jeniskelamin");
+        nomortlp=b.getString("nomortlp");
+        emailmurid=b.getString("emailmurid");
+        alamatmurid=b.getString("alamatmurid");
+
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_favorites:break;
+
+                            case R.id.action_schedules:break;
+
+                            case R.id.action_music:
+                                Bundle extras = new Bundle();
+                                extras.putString("idmurid",id);
+                                extras.putString("namadepan",namadepan);
+                                extras.putString("namabelakang",namabelakang);
+                                extras.putString("tempatlahir",tempatlahir);
+                                extras.putString("tanggallahir",tanggallahir);
+                                extras.putString("jeniskelamin",jeniskelamin);
+                                extras.putString("nomorlp",nomortlp);
+                                extras.putString("emailmurid",emailmurid);
+                                extras.putString("alamatmurid",alamatmurid);
+                                Intent intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
+                                intent.putExtras(extras);
+                                startActivity(intent);
+
+                                break;
+
+                        }
+                        return true;
+                    }
+                });
+
+
     }
 
     public void fetchData()

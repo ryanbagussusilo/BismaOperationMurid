@@ -1,39 +1,19 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBaseResponse;
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Activity.ListGuruActivity;
-import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
+
 import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
+
 
 
 public class DetilGuruActivity extends AppCompatActivity implements View.OnClickListener {
@@ -75,7 +55,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         txtnama = (TextView) findViewById(R.id.txtnama);
         txttlp = (TextView) findViewById(R.id.txtTelefon);
         txtjk = (TextView) findViewById(R.id.txtJenisKelamin);
-        //txtnamaDepan=(TextView)findViewById(R.id.txtnam)
+
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         txttgllahir = (TextView) findViewById(R.id.txtTanggalLahir);
         tempatLahir = (TextView) findViewById(R.id.txtTempatLahir);
