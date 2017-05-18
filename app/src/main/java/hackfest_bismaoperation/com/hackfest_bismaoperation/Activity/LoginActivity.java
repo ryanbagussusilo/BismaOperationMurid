@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                         //extras.putString("lo",namabelakang);
 
 
-                        Toast.makeText(getBaseContext()," Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(),idMurid+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
                         intent.putExtras(extras);
                         startActivity(intent);

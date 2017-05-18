@@ -30,7 +30,8 @@
             android:label="@string/title_activity_detil_guru"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Activity.PopUpOrderActivity" />
-        <activity android:name=".Activity.ProfilActivity"></activity>
+        <activity android:name=".Activity.ProfilActivity" />
+        <activity android:name=".Activity.Testing"></activity>
     </application>
 
 </manifest>

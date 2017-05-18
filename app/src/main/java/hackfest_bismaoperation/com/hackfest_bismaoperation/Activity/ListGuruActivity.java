@@ -44,19 +44,10 @@ public class ListGuruActivity extends AppCompatActivity {
     private String nomortlp;
     private String emailmurid;
     private String alamatmurid;
+    private  Intent intent;
 
 
 
-
-    private static int idmurid1;
-
-    public static int getIdmurid1() {
-        return idmurid1;
-    }
-
-    public static void setIdmurid1(int idmurid1) {
-        ListGuruActivity.idmurid1 = idmurid1;
-    }
 
 
     @Override
@@ -93,8 +84,10 @@ public class ListGuruActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_favorites:break;
-
+                            case R.id.action_favorites:
+                            intent = new Intent(ListGuruActivity.this, Testing.class);
+                            startActivity(intent);
+                            break;
                             case R.id.action_schedules:break;
 
                             case R.id.action_music:
@@ -108,7 +101,7 @@ public class ListGuruActivity extends AppCompatActivity {
                                 extras.putString("nomorlp",nomortlp);
                                 extras.putString("emailmurid",emailmurid);
                                 extras.putString("alamatmurid",alamatmurid);
-                                Intent intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
+                               intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
                                 intent.putExtras(extras);
                                 startActivity(intent);
 

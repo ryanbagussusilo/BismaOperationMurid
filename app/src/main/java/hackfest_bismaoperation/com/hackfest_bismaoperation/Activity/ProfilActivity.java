@@ -45,7 +45,7 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
     private String nomortlp;
     private String emailmurid;
     private String alamatmurid;
-
+    private  Intent intent;
     private TextView txtnamadepan,txtnamabelakang,txttempatlahir,txttanggallahir,txtjeniskelamin,txtnomortlp,txtemailmurid,txtalamatmurid;
 
 
@@ -87,28 +87,44 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
 //        txtemailmurid.setText(emailmurid);
 //        txtjeniskelamin.setText(jeniskelamin);
 
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-//                findViewById(R.id.bottom_navigation);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(
-//                new BottomNavigationView.OnNavigationItemSelectedListener() {
-//                    @Override
-//                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                        switch (item.getItemId()) {
-//                            case R.id.action_favorites:break;
-//
-//                            case R.id.action_schedules:break;
-//
-//                            case R.id.action_music:
-//                                Intent intent = new Intent(ProfilActivity.this, ProfilActivity.class);
-//                                startActivity(intent);
-//                                break;
-//
-//                        }
-//                        return true;
-//                    }
-//                });
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                        switch (item.getItemId()) {
+                            case R.id.action_favorites:
+                                intent = new Intent(ProfilActivity.this,ListGuruActivity.class);
+                                Bundle extras = new Bundle();
+                                extras.putString("idmurid",id);
+                                extras.putString("namadepan",namadepan);
+                                extras.putString("namabelakang",namabelakang);
+                                extras.putString("tempatlahir",tempatlahir);
+                                extras.putString("tanggallahir",tanggallahir);
+                                extras.putString("jeniskelamin",jeniskelamin);
+                                extras.putString("nomorlp",nomortlp);
+                                extras.putString("emailmurid",emailmurid);
+                                extras.putString("alamatmurid",alamatmurid);
+                                intent.putExtras(extras);
+                                startActivity(intent);
+                                break;
+
+
+                            case R.id.action_schedules:
+
+                            break;
+                            case R.id.action_music:
+                                intent = new Intent(ProfilActivity.this, ProfilActivity.class);
+                                startActivity(intent);
+                                break;
+
+                        }
+                        return true;
+                    }
+                });
     }
 
     private void initMeasure() {
@@ -130,14 +146,14 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
     private void initListView() {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 1; i++) {
-            data.add("Nama Depan        :"+namadepan);
-            data.add("Nama Belakang     :"+namabelakang);
-            data.add("Tempatlahir       :"+tempatlahir);
-            data.add("Tanggal Lahir     :"+tanggallahir);
-            data.add("Jenis Kelamin     :"+jeniskelamin);
-            data.add("Nomor Telepon     :"+nomortlp);
-            data.add("Email             :"+emailmurid);
-            data.add("Alamat            :"+alamatmurid);
+            data.add("Nama Depan              :"+namadepan);
+            data.add("Nama Belakang         :"+namabelakang);
+            data.add("Tempatlahir                :"+tempatlahir);
+            data.add("Tanggal Lahir             :"+tanggallahir);
+            data.add("Jenis Kelamin            :"+jeniskelamin);
+            data.add("Nomor Telepon          :"+nomortlp);
+            data.add("Email                           :"+emailmurid);
+            data.add("Alamat                        :"+alamatmurid);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.activity_list_item, android.R.id.text1, data);
         listView.setAdapter(adapter);

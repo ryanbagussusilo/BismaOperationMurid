@@ -11,7 +11,7 @@
         android:id="@+id/action_schedules"
         android:enabled="true"
         android:icon="@mipmap/ic_launcher"
-        android:title="Daftar Guru"
+        android:title="Daftar Order"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_music"
