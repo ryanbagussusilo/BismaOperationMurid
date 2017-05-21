@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
@@ -15,7 +14,7 @@ import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 public class GuruHolder extends RecyclerView.ViewHolder{
 
      TextView tvsub,tvid;
-     TextView tvtit;
+     TextView tvtit ;
      TextView tvStatus;
      TextView tv_telpon;
      TextView tv_email;

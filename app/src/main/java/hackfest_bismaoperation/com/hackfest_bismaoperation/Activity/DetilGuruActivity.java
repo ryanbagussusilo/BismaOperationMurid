@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
@@ -25,7 +27,8 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
     private String nomorTlp;
 
     private Call<APIOrderData> callOrder;
-    private int idmurid, idguru;
+    private String idmurid;
+    private int  idguru;
     LinearLayout view1;
     ListGuruActivity lgactivity;
     //ImageView img;
@@ -101,6 +104,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
 
         btnorder.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
+        idmurid=b.getString("idmurid");
         idguru = b.getInt("id");
         namaDepan = b.getString("nama");
         namaBelakang = b.getString("namabelakang");
@@ -112,6 +116,8 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         email = b.getString("email");
         status=b.getString("status");
         harga=b.getString("harga");
+
+        Toast.makeText(getBaseContext(),idguru+" Login "+idmurid, Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
@@ -179,6 +185,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
             Intent intent = new Intent(this, PopUpOrderActivity.class);
             Bundle extras = new Bundle();
             extras.putString("nomortlp", nomorTlp);
+            extras.putString("idmurid",idmurid);
             extras.putInt("id", idguru);
             intent.putExtras(extras);
             startActivity(intent);

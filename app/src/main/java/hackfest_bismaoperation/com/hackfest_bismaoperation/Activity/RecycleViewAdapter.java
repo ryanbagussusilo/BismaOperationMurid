@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.Guru;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
@@ -19,12 +20,12 @@ import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
  */
 public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
 
-    List<Guru> listGuru;
+    List<APIGuruData.ResponBean.DataBean> listGuru;
     private Context context;
     private String notlp1,email,tgllahir,tempatlahir,jeniskelamin,namabelakang;
 
 
-    public RecycleViewAdapter(Context context, List<Guru> listGuru) {
+    public RecycleViewAdapter(Context context, List<APIGuruData.ResponBean.DataBean> listGuru) {
         this.context = context;
         this.listGuru = listGuru;
 
@@ -38,18 +39,18 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
 
     @Override
     public void onBindViewHolder(GuruHolder holder, int position) {
-        final Guru guru = listGuru.get(position);
+        final APIGuruData.ResponBean.DataBean guru = listGuru.get(position);
         final GuruHolder mainHolder = holder;
 
-        mainHolder.tvid.setText(String.valueOf(guru.getId_guru()));
+        mainHolder.tvid.setText(String.valueOf(guru.getId()));
         mainHolder.tvtit.setText(guru.getNama_depan());
         mainHolder.tvsub.setText(guru.getAlamat());
         mainHolder.tvStatus.setText(guru.getMata_pelajaran());
-        mainHolder.tv_telpon.setText(guru.getNomor_telepon());
+        mainHolder.tv_telpon.setText(guru.getTelepon());
         mainHolder.tv_email.setText(guru.getEmail());
         mainHolder.tv_tanggallahir.setText(guru.getTanggal_lahir());
         mainHolder.tv_tempatlahir.setText(guru.getTempat_lahir());
-        mainHolder.tv_jeniskelamin.setText(guru.getJenis_kelamin());
+        mainHolder.tv_jeniskelamin.setText(guru.getKelamin());
         mainHolder.tv_namabelakang.setText(guru.getNama_belakang());
         mainHolder.tv_harga.setText(guru.getHarga());
         namabelakang=guru.getNama_belakang();

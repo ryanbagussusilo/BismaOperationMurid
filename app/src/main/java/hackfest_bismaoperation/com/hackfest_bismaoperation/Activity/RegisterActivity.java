@@ -1,5 +1,6 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
+import android.accounts.AccountManager;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -115,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             String usernameS=usernamereg.getText().toString();
             String passwordS=passwordreg.getText().toString();
 
+
             String jeniskelaminS="";
             if(rbL.isChecked()) {
                 jeniskelaminS= "Pria";
@@ -128,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             service = RestClient.getClient();
 
 
-            callSignup = service.signUp(namadepanS,namabelakangS,alamatmuridS,tempatlahirS,nomortelpS,jeniskelaminS,birthDateFormat,emailmuridS,usernameS,passwordS,"","");
+            callSignup = service.signUp(namadepanS,namabelakangS,alamatmuridS,tempatlahirS,nomortelpS,jeniskelaminS,birthDateFormat,emailmuridS,usernameS,passwordS,"","","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmJpc21hLmJsdWVjcmF3bGVyLmNvbS9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTE2NjUwNywiZXhwIjoxNDk1MTcwMTA3LCJuYmYiOjE0OTUxNjY1MDcsImp0aSI6IjMyTW5JZ1gxc1k4ZDZOYWoiLCJzdWIiOjN9.LDnl9B8WSAvWqCP-nClzUyb1KnGF9_V_7TAvsG1K_h8");
             callSignup.enqueue(new Callback<APIBaseResponse>() {
                 @Override
                 public void onResponse(Response<APIBaseResponse> response) {
@@ -160,9 +162,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
         }
-
-
-
     }
 
 

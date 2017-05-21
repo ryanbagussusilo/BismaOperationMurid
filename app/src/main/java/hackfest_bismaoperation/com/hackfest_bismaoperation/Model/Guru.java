@@ -5,25 +5,44 @@ package hackfest_bismaoperation.com.hackfest_bismaoperation.Model;
  */
 public class Guru {
 
-    private int id_guru;
+    private int id;
+    private String id_pengajar;
     private String nama_depan;
     private String nama_belakang;
     private String alamat;
     private String telepon;
     private String kelamin;
     private String tempat_lahir;
-    private String riwayat_pendidikan;
     private String tanggal_lahir;
-    private String foto_profil;
+    private String profil;
+    private String status;
     private String email;
     private String username;
     private String password;
     private String longitude;
     private String latitude;
-    private String mata_pelajaran;
     private String harga;
+    private String billing;
+    private String riwayat_pendidikan;
+    private String mata_pelajaran;
+    private String created_at;
+    private String updated_at;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getId_pengajar() {
+        return id_pengajar;
+    }
+
+    public void setId_pengajar(String id_pengajar) {
+        this.id_pengajar = id_pengajar;
+    }
 
     public String getNama_depan() {
         return nama_depan;
@@ -49,20 +68,20 @@ public class Guru {
         this.alamat = alamat;
     }
 
-    public String getNomor_telepon() {
+    public String getTelepon() {
         return telepon;
     }
 
-    public void setNomor_telepon(String nomor_telepon) {
-        this.telepon = nomor_telepon;
+    public void setTelepon(String telepon) {
+        this.telepon = telepon;
     }
 
-    public String getJenis_kelamin() {
+    public String getKelamin() {
         return kelamin;
     }
 
-    public void setJenis_kelamin(String jenis_kelamin) {
-        this.kelamin = jenis_kelamin;
+    public void setKelamin(String kelamin) {
+        this.kelamin = kelamin;
     }
 
     public String getTempat_lahir() {
@@ -73,14 +92,6 @@ public class Guru {
         this.tempat_lahir = tempat_lahir;
     }
 
-    public String getRiwayat_pendidikan() {
-        return riwayat_pendidikan;
-    }
-
-    public void setRiwayat_pendidikan(String riwayat_pendidikan) {
-        this.riwayat_pendidikan = riwayat_pendidikan;
-    }
-
     public String getTanggal_lahir() {
         return tanggal_lahir;
     }
@@ -89,12 +100,20 @@ public class Guru {
         this.tanggal_lahir = tanggal_lahir;
     }
 
-    public String getFoto_profil() {
-        return foto_profil;
+    public String getProfil() {
+        return profil;
     }
 
-    public void setFoto_profil(String foto_profil) {
-        this.foto_profil = foto_profil;
+    public void setProfil(String profil) {
+        this.profil = profil;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getEmail() {
@@ -137,6 +156,30 @@ public class Guru {
         this.latitude = latitude;
     }
 
+    public String getHarga() {
+        return harga;
+    }
+
+    public void setHarga(String harga) {
+        this.harga = harga;
+    }
+
+    public String getBilling() {
+        return billing;
+    }
+
+    public void setBilling(String billing) {
+        this.billing = billing;
+    }
+
+    public String getRiwayat_pendidikan() {
+        return riwayat_pendidikan;
+    }
+
+    public void setRiwayat_pendidikan(String riwayat_pendidikan) {
+        this.riwayat_pendidikan = riwayat_pendidikan;
+    }
+
     public String getMata_pelajaran() {
         return mata_pelajaran;
     }
@@ -145,19 +188,19 @@ public class Guru {
         this.mata_pelajaran = mata_pelajaran;
     }
 
-    public int getId_guru() {
-        return id_guru;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setId_guru(int id_guru) {
-        this.id_guru = id_guru;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
-    public String getHarga() {
-        return harga;
+    public String getUpdated_at() {
+        return updated_at;
     }
 
-    public void setHarga(String harga) {
-        this.harga = harga;
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
     }
 }

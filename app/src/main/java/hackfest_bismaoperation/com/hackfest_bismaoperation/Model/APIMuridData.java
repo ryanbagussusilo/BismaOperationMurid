@@ -1,47 +1,89 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 /**
  * Created by Ryan Bagus Susilo on 5/12/2017.
  */
-public class APIMuridData extends APIBaseResponse implements Serializable {
+public class APIMuridData  implements Serializable {
 
-    private List<UserDataBean> userData;
+    /**
+     * status : true
+     * status_code : 200
+     * message : Login Berhasil
+     * respon : {"id":1,"nama_depan":"babar","nama_belakang":"sar","tempat_lahir":"rumah sakit","alamat":"babarsari yogya","telepon":"1253456","kelamin":"cowok sejati","tanggal_lahir":"2017-05-01","email":"dfgh@dfgh.com","longitude":"80854","latitude":"85543"}
+     */
 
-    public List<UserDataBean> getUserData() {
-        return userData;
+    private boolean status;
+    private int status_code;
+    private String message;
+    private ResponBean respon;
+
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setUserData(List<UserDataBean> userData) {
-        this.userData = userData;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public static class UserDataBean {
+    public int getStatus_code() {
+        return status_code;
+    }
 
-        private String id;
+    public void setStatus_code(int status_code) {
+        this.status_code = status_code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public ResponBean getRespon() {
+        return respon;
+    }
+
+    public void setRespon(ResponBean respon) {
+        this.respon = respon;
+    }
+
+    public static class ResponBean {
+        /**
+         * id : 1
+         * nama_depan : babar
+         * nama_belakang : sar
+         * tempat_lahir : rumah sakit
+         * alamat : babarsari yogya
+         * telepon : 1253456
+         * kelamin : cowok sejati
+         * tanggal_lahir : 2017-05-01
+         * email : dfgh@dfgh.com
+         * longitude : 80854
+         * latitude : 85543
+         */
+
+        private Integer id;
         private String nama_depan;
         private String nama_belakang;
         private String tempat_lahir;
-        private String tanggal_lahir;
-        private String kelamin;
-        private String telepon;
-        private String email;
         private String alamat;
+        private String telepon;
+        private String kelamin;
+        private String tanggal_lahir;
+        private String email;
         private String longitude;
         private String latitude;
-        private String username;
-        private String password;
-        private String profil;
-        private String created_at;
-        private String updated_at;
 
-        public String getId() {
+        public Integer getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(Integer id) {
             this.id = id;
         }
 
@@ -69,20 +111,12 @@ public class APIMuridData extends APIBaseResponse implements Serializable {
             this.tempat_lahir = tempat_lahir;
         }
 
-        public String getTanggal_lahir() {
-            return tanggal_lahir;
+        public String getAlamat() {
+            return alamat;
         }
 
-        public void setTanggal_lahir(String tanggal_lahir) {
-            this.tanggal_lahir = tanggal_lahir;
-        }
-
-        public String getKelamin() {
-            return kelamin;
-        }
-
-        public void setKelamin(String kelamin) {
-            this.kelamin = kelamin;
+        public void setAlamat(String alamat) {
+            this.alamat = alamat;
         }
 
         public String getTelepon() {
@@ -93,20 +127,28 @@ public class APIMuridData extends APIBaseResponse implements Serializable {
             this.telepon = telepon;
         }
 
+        public String getKelamin() {
+            return kelamin;
+        }
+
+        public void setKelamin(String kelamin) {
+            this.kelamin = kelamin;
+        }
+
+        public String getTanggal_lahir() {
+            return tanggal_lahir;
+        }
+
+        public void setTanggal_lahir(String tanggal_lahir) {
+            this.tanggal_lahir = tanggal_lahir;
+        }
+
         public String getEmail() {
             return email;
         }
 
         public void setEmail(String email) {
             this.email = email;
-        }
-
-        public String getAlamat() {
-            return alamat;
-        }
-
-        public void setAlamat(String alamat) {
-            this.alamat = alamat;
         }
 
         public String getLongitude() {
@@ -123,46 +165,6 @@ public class APIMuridData extends APIBaseResponse implements Serializable {
 
         public void setLatitude(String latitude) {
             this.latitude = latitude;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getProfil() {
-            return profil;
-        }
-
-        public void setProfil(String profil) {
-            this.profil = profil;
-        }
-
-        public String getCreated_at() {
-            return created_at;
-        }
-
-        public void setCreated_at(String created_at) {
-            this.created_at = created_at;
-        }
-
-        public String getUpdated_at() {
-            return updated_at;
-        }
-
-        public void setUpdated_at(String updated_at) {
-            this.updated_at = updated_at;
         }
     }
 }

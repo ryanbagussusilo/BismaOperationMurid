@@ -34,8 +34,8 @@ public class ListGuruActivity extends AppCompatActivity {
     private Call<APIGuruData> callGuru;
     private RestClient.GitApiInterface service;
 
-    private ArrayList<Guru> GuruItems = new ArrayList<Guru>();
-    private String id;
+    private ArrayList<APIGuruData.ResponBean.DataBean> GuruItems = new ArrayList<APIGuruData.ResponBean.DataBean>();
+    private Integer id;
     private String namadepan;
     private String namabelakang;
     private String tempatlahir;
@@ -45,10 +45,6 @@ public class ListGuruActivity extends AppCompatActivity {
     private String emailmurid;
     private String alamatmurid;
     private  Intent intent;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +60,7 @@ public class ListGuruActivity extends AppCompatActivity {
         fetchData();
 
         Bundle b=getIntent().getExtras();
-        id=b.getString("idmurid");
+        id=b.getInt("idmurid");
         namadepan=b.getString("namadepan");
         namabelakang=b.getString("namabelakang");
         tempatlahir=b.getString("tempatlahir");
@@ -88,11 +84,13 @@ public class ListGuruActivity extends AppCompatActivity {
                             intent = new Intent(ListGuruActivity.this, Testing.class);
                             startActivity(intent);
                             break;
-                            case R.id.action_schedules:break;
 
+                            case R.id.action_schedules:
+
+                                break;
                             case R.id.action_music:
                                 Bundle extras = new Bundle();
-                                extras.putString("idmurid",id);
+                                 extras.putInt("idmurid",id);
                                 extras.putString("namadepan",namadepan);
                                 extras.putString("namabelakang",namabelakang);
                                 extras.putString("tempatlahir",tempatlahir);
@@ -101,10 +99,9 @@ public class ListGuruActivity extends AppCompatActivity {
                                 extras.putString("nomorlp",nomortlp);
                                 extras.putString("emailmurid",emailmurid);
                                 extras.putString("alamatmurid",alamatmurid);
-                               intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
+                                intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
                                 intent.putExtras(extras);
                                 startActivity(intent);
-
                                 break;
 
                         }
@@ -139,11 +136,11 @@ public class ListGuruActivity extends AppCompatActivity {
 
                         GuruItems.clear();
 
-                        List<Guru> ResponseItems = result.getGuru();
+                        List<APIGuruData.ResponBean.DataBean> ResponseItems = response.body().getRespon().getData();
 
                         if(ResponseItems!=null)
                         {
-                            for (Guru Responitem : ResponseItems) {
+                            for (APIGuruData.ResponBean.DataBean Responitem : ResponseItems) {
                                 GuruItems.add(Responitem);
                                 adapter.notifyDataSetChanged();
                             }

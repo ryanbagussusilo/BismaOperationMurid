@@ -21,6 +21,7 @@ import retrofit.Retrofit;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.Headers;
 import retrofit.http.POST;
 
@@ -30,7 +31,7 @@ import retrofit.http.POST;
  */
 public class RestClient {
     private static GitApiInterface gitApiInterface;
-    private static String baseUrl = "http://bisma.pe.hu" ;
+    private static String baseUrl = "http://bisma.bluecrawler.com" ;
 
 
     public static GitApiInterface getClient(){
@@ -62,24 +63,30 @@ public class RestClient {
     public interface GitApiInterface {
 
         @FormUrlEncoded
-        @POST("/api/index.php/Murid/login")
+        @Headers("Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmJpc21hLmJsdWVjcmF3bGVyLmNvbS9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTMzMzgzNSwiZXhwIjoxNDk3OTI1ODM1LCJuYmYiOjE0OTUzMzM4MzUsImp0aSI6IlVDZlNhUW9qdm5YdEVmSEoiLCJzdWIiOjF9.1ekzdWOPoHA4GQGXqRaL9CopRUT77ZLtz2sCJcZA9Z4")
+        @POST("/public/Murid/LoginMurid")
         Call<APIMuridData> login(@Field("username") String username, @Field("password") String password);
 
         @FormUrlEncoded
-        @POST("/api/index.php/Murid/signup")
+        @POST("/public/Murid/RegisterMurid")
         Call<APIBaseResponse> signUp(@Field("nama_depan") String nama_depan, @Field("nama_belakang") String nama_belakang, @Field("alamat") String alamat, @Field("tempat_lahir") String tempat_lahir ,
-                                              @Field("nomor_telepon")String nomor_telepon, @Field("jenis_kelamin") String jenis_kelamin, @Field(" tanggal_lahir") String birthDate,
+                                              @Field("telepon")String nomor_telepon, @Field("kelamin") String jenis_kelamin, @Field(" tanggal_lahir") String birthDate,
                                               @Field("email") String email, @Field("username") String username,
-                                              @Field("password") String password, @Field("longitude") String longitude, @Field("latitude") String latitude);
+                                              @Field("password") String password, @Field("longitude") String longitude, @Field("latitude") String latitude,@Header("Authorization") String Authorization);
 
 
-        @Headers("Cache-Control: no-cache")
-        @GET("/api/index.php/Pengajar/show")
+        @Headers("Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmJpc21hLmJsdWVjcmF3bGVyLmNvbS9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTMzMzgzNSwiZXhwIjoxNDk3OTI1ODM1LCJuYmYiOjE0OTUzMzM4MzUsImp0aSI6IlVDZlNhUW9qdm5YdEVmSEoiLCJzdWIiOjF9.1ekzdWOPoHA4GQGXqRaL9CopRUT77ZLtz2sCJcZA9Z4")
+        @GET("public/Pengajar/ListPengajar")
         Call<APIGuruData> showguru();
 
         @FormUrlEncoded
         @POST("/api/index.php/Murid/order")
         Call<APIOrderData> order(@Field("id_pengajar") int idpengajar, @Field("id_murid") int idmurid);
+
+        @FormUrlEncoded
+        @POST("/public/Pengajar/ListPengajar")
+        Call<APIGuruData> orderdetil(@Field("id_murid")int idmurid);
+
 
 
     }

@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.Date;
+
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
@@ -87,34 +89,37 @@ public class LoginActivity extends AppCompatActivity {
                     APIMuridData result = response.body();
                     String returnresponse=result.getMessage();
 
+                    //Format Date Database  YYYY-MM-DD
                     Log.d("LoginActivity", "response = " + new Gson().toJson(result));
+
                     if (returnresponse.equalsIgnoreCase("Login Berhasil")) {
-                        String idMurid = result.getUserData().get(0).getId();
-                        String nama=result.getUserData().get(0).getNama_depan();
-                        String namabelakang=result.getUserData().get(0).getNama_belakang();
-                        String tempatlahir=result.getUserData().get(0).getTempat_lahir();
-                        String tanggallahir=result.getUserData().get(0).getTanggal_lahir();
-                        String jeniskelamin=result.getUserData().get(0).getKelamin();
-                        String nomortlp=result.getUserData().get(0).getTelepon();
-                        String emailmurid=result.getUserData().get(0).getEmail();
-                        String alamatmurid=result.getUserData().get(0).getAlamat();
-                        //String longitudemurid=result.getUserData().get(0).getLongitude();
-                        //String latitudemurid=result.getUserData().get(0).getLatitude();
+                        Integer idMurid = result.getRespon().getId();
+                        Log.d("LoginActivity", "response = " + new Gson().toJson(idMurid));
+                        String nama=result.getRespon().getNama_depan();
+                        String namabelakang=result.getRespon().getNama_belakang();
+                        String tempatlahir=result.getRespon().getTempat_lahir();
+                        String tanggallahir=result.getRespon().getTanggal_lahir();
+                        String jeniskelamin=result.getRespon().getKelamin();
+                        String nomortlp=result.getRespon().getTelepon();
+                        String emailmurid=result.getRespon().getEmail();
+                        String alamatmurid=result.getRespon().getAlamat();
+                     //   String longitudemurid=result.getRespon().getLongitude();
+                     //   String latitudemurid=result.getRespon().getLatitude();
 
                         Bundle extras = new Bundle();
-                        extras.putString("idmurid",idMurid);
+                        extras.putInt("idmurid",idMurid);
                         extras.putString("namadepan",nama);
                         extras.putString("namabelakang",namabelakang);
                         extras.putString("tempatlahir",tempatlahir);
-                        extras.putString("tanggallahir",tanggallahir);
+                        extras.putString("tanggallahir",tanggallahir.toString());
                         extras.putString("jeniskelamin",jeniskelamin);
                         extras.putString("nomorlp",nomortlp);
                         extras.putString("emailmurid",emailmurid);
                         extras.putString("alamatmurid",alamatmurid);
-                        //extras.putString("lo",namabelakang);
 
 
-                        Toast.makeText(getBaseContext(),idMurid+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
+
+                        Toast.makeText(getBaseContext()," Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
                         intent.putExtras(extras);
                         startActivity(intent);
