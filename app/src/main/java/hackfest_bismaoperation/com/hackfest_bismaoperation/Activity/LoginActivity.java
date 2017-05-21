@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
     EditText txtusername;
     EditText txtpassword;
+
     private static final String TAG = "LoginActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                         String nomortlp=result.getRespon().getTelepon();
                         String emailmurid=result.getRespon().getEmail();
                         String alamatmurid=result.getRespon().getAlamat();
+
                      //   String longitudemurid=result.getRespon().getLongitude();
                      //   String latitudemurid=result.getRespon().getLatitude();
 
@@ -119,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                        Toast.makeText(getBaseContext()," Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(),idMurid+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
                         intent.putExtras(extras);
                         startActivity(intent);

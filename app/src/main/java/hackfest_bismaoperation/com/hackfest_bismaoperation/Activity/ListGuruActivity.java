@@ -45,6 +45,7 @@ public class ListGuruActivity extends AppCompatActivity {
     private String emailmurid;
     private String alamatmurid;
     private  Intent intent;
+    Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +87,24 @@ public class ListGuruActivity extends AppCompatActivity {
                             break;
 
                             case R.id.action_schedules:
-
+                                extras = new Bundle();
+                                extras.putInt("idmurid",id);
+                                extras.putString("namadepan",namadepan);
+                                extras.putString("namabelakang",namabelakang);
+                                extras.putString("tempatlahir",tempatlahir);
+                                extras.putString("tanggallahir",tanggallahir);
+                                extras.putString("jeniskelamin",jeniskelamin);
+                                extras.putString("nomorlp",nomortlp);
+                                extras.putString("emailmurid",emailmurid);
+                                extras.putString("alamatmurid",alamatmurid);
+                                intent = new Intent(ListGuruActivity.this, ListOrderActivity.class);
+                                intent.putExtras(extras);
+                                startActivity(intent);
                                 break;
+
                             case R.id.action_music:
-                                Bundle extras = new Bundle();
-                                 extras.putInt("idmurid",id);
+                                extras = new Bundle();
+                                extras.putInt("idmurid",id);
                                 extras.putString("namadepan",namadepan);
                                 extras.putString("namabelakang",namabelakang);
                                 extras.putString("tempatlahir",tempatlahir);
@@ -152,7 +166,6 @@ public class ListGuruActivity extends AppCompatActivity {
                     // response received but request not successful (like 400,401,403 etc)
                     //Handle errors
                     Toast.makeText(getApplicationContext(), "Gagal Ambil Data", Toast.LENGTH_SHORT).show();
-
                     progressDialog.dismiss();
                 }
             }

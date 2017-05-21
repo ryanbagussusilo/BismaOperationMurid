@@ -27,9 +27,9 @@
         android:text="Medium Text"
         android:id="@+id/txtnama"
         android:textColor="#000000"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="139dp"
         android:layout_below="@+id/textView8"
-        android:layout_alignStart="@+id/txtTelefon" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,8 +57,8 @@
         android:text="Nama "
         android:id="@+id/textView6"
         android:textColor="#000000"
-        android:layout_alignBottom="@+id/txtnama"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/txtTelefon"
+        android:layout_alignEnd="@+id/textView10" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -176,7 +176,6 @@
         android:text="Detil Guru"
         android:textColor="#000000"
         android:id="@+id/textView8"
-        android:layout_marginTop="27dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -226,7 +225,6 @@
         android:layout_height="wrap_content"
         android:text="Top Up"
         android:id="@+id/btnTopUp"
-        android:layout_marginBottom="34dp"
         android:layout_above="@+id/btnOrder"
         android:layout_alignStart="@+id/txtHarga" />
 
@@ -238,8 +236,13 @@
         android:layout_alignBottom="@+id/btnTopUp"
         android:layout_toEndOf="@+id/textView7" />
 
-
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profildetil"
+        android:padding="60dp"
+        android:layout_above="@+id/textView6"
+        android:layout_toEndOf="@+id/textView4" />
 
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
@@ -24,7 +26,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
     private String namaDepan,harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat,status;
-    private String nomorTlp;
+    private String nomorTlp,foto;
 
     private Call<APIOrderData> callOrder;
     private String idmurid;
@@ -47,6 +49,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
     private int[][] colourBins;
     private volatile boolean loaded = false;
     private int maxY;
+    ImageView profil;
 
     TextView txtnama,txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId,txtMatapelajaran;
 
@@ -65,7 +68,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         txtAlamat = (TextView) findViewById(R.id.txtAlamat);
         txtMatapelajaran=(TextView) findViewById(R.id.txtMataPelajaran);
         txtharga=(TextView) findViewById(R.id.txtHarga);
-
+        profil=(ImageView) findViewById(R.id.profildetil);
 
         // img=(ImageView)findViewById(R.id.img1);
 
@@ -116,6 +119,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         email = b.getString("email");
         status=b.getString("status");
         harga=b.getString("harga");
+        foto=b.getString("profil");
 
         Toast.makeText(getBaseContext(),idguru+" Login "+idmurid, Toast.LENGTH_LONG).show();
 
@@ -129,6 +133,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         tempatLahir.setText(tempatlahir);
         txtMatapelajaran.setText(status);
         txtharga.setText(harga);
+        Picasso.with(this).load(foto).into(profil);
 
     }
 

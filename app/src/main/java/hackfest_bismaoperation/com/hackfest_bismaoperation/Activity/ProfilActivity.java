@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +66,7 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
         nomortlp=b.getString("nomortlp");
         emailmurid=b.getString("emailmurid");
         alamatmurid=b.getString("alamatmurid");
+
 
         initMeasure();
         initView();

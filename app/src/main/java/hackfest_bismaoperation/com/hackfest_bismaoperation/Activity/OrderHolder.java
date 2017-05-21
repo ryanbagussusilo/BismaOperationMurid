@@ -1,13 +1,13 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
+
 
 /**
  * Created by Ryan Bagus Susilo on 5/21/2017.
@@ -31,14 +31,9 @@ public class OrderHolder extends RecyclerView.ViewHolder {
     TextView mata_pelajaran;
     RelativeLayout item;
 
-
-
     public OrderHolder(View view){
         super(view);
-
-        tv_idpengajarO=(TextureView) view.findViewById(R.id.
-
-
+       // tv_idpengajarO=(TextView) view.findViewById(R.id.)
     }
 
 }

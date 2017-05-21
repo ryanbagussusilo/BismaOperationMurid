@@ -2,32 +2,27 @@ package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.Guru;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
 /**
- * Created by Ryan Bagus Susilo on 5/12/2017.
+ * Created by Ryan Bagus Susilo on 5/21/2017.
  */
-public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
+public class RecycleViewOrderAdapter extends RecyclerView.Adapter<GuruHolder>{
 
     List<APIGuruData.ResponBean.DataBean> listGuru;
     private Context context;
     private String notlp1,email,tgllahir,tempatlahir,jeniskelamin,namabelakang;
 
-
-    public RecycleViewAdapter(Context context, List<APIGuruData.ResponBean.DataBean> listGuru) {
+    public RecycleViewOrderAdapter(Context context, List<APIGuruData.ResponBean.DataBean> listGuru) {
         this.context = context;
         this.listGuru = listGuru;
 
@@ -55,8 +50,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
         mainHolder.tv_jeniskelamin.setText(guru.getKelamin());
         mainHolder.tv_namabelakang.setText(guru.getNama_belakang());
         mainHolder.tv_harga.setText(guru.getHarga());
-        Picasso.with(context).load(guru.getProfil()).into(mainHolder.foto);
-
         namabelakang=guru.getNama_belakang();
 
         mainHolder.item.setOnClickListener(new View.OnClickListener() {
@@ -69,13 +62,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
                 extras.putString("status", mainHolder.tvStatus.getText().toString());
                 extras.putString("nomortlp", mainHolder.tv_telpon.getText().toString());
                 extras.putString("harga", mainHolder.tv_harga.getText().toString());
-               // extras.putString("nomortlp",notlp1);
+                // extras.putString("nomortlp",notlp1);
                 extras.putString("email",mainHolder.tv_email.getText().toString());
                 extras.putString("tanggallahir",mainHolder.tv_tanggallahir.getText().toString());
                 extras.putString("tempatlahir",mainHolder.tv_tempatlahir.getText().toString());
                 extras.putString("jeniskelamin",mainHolder.tv_jeniskelamin.getText().toString());
                 extras.putString("namabelakang",mainHolder.tv_namabelakang.getText().toString());
-                extras.putString("profil",mainHolder.foto.toString());
                 Intent intent = new Intent(context, DetilGuruActivity.class);
                 intent.putExtras(extras);
                 context.startActivity(intent);
@@ -93,4 +85,5 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
         GuruHolder listHolder = new GuruHolder(mainGroup);
         return listHolder;
     }
+
 }

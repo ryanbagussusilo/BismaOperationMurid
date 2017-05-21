@@ -2,6 +2,7 @@ package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,7 +24,8 @@ public class GuruHolder extends RecyclerView.ViewHolder{
      TextView tv_jeniskelamin;
      TextView tv_namabelakang;
      TextView tv_harga;
-    RelativeLayout item;
+     RelativeLayout item;
+     ImageView foto;
 
     public GuruHolder(View view)
     {
@@ -40,6 +42,6 @@ public class GuruHolder extends RecyclerView.ViewHolder{
         this.tv_namabelakang=(TextView) view.findViewById(R.id.tv_namabelakang);
         this.tv_harga=(TextView) view.findViewById(R.id.tv_harga);
         this.item = (RelativeLayout) view.findViewById(R.id.itemGuru);
-
+        this.foto = (ImageView) view.findViewById(R.id.icon);
     }
 }

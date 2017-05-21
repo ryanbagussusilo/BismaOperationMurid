@@ -24,6 +24,7 @@ import retrofit.http.GET;
 import retrofit.http.Header;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 
 /**
@@ -83,9 +84,9 @@ public class RestClient {
         @POST("/api/index.php/Murid/order")
         Call<APIOrderData> order(@Field("id_pengajar") int idpengajar, @Field("id_murid") int idmurid);
 
-        @FormUrlEncoded
-        @POST("/public/Pengajar/ListPengajar")
-        Call<APIGuruData> orderdetil(@Field("id_murid")int idmurid);
+        @Headers("Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmJpc21hLmJsdWVjcmF3bGVyLmNvbS9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTMzMzgzNSwiZXhwIjoxNDk3OTI1ODM1LCJuYmYiOjE0OTUzMzM4MzUsImp0aSI6IlVDZlNhUW9qdm5YdEVmSEoiLCJzdWIiOjF9.1ekzdWOPoHA4GQGXqRaL9CopRUT77ZLtz2sCJcZA9Z4")
+        @GET("/public/Pengajar/ListPengajar")
+        Call<APIGuruData> orderdetil(@Query("id_murid")int idmurid);
 
 
 
