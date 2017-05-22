@@ -12,9 +12,10 @@ import java.io.IOException;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Helper.ToStringConverter;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBaseResponse;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIDealOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderListPengajar;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
@@ -22,7 +23,6 @@ import retrofit.Retrofit;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
-import retrofit.http.Header;
 import retrofit.http.Headers;
 import retrofit.http.POST;
 import retrofit.http.Query;
@@ -35,7 +35,7 @@ public class RestClient {
     private static GitApiInterface gitApiInterface;
 //    private static String baseUrl = "http://bisma.bluecrawler.com" ;
     private static String baseUrl = "http://api.bismaoperation.id" ;
-    private static final String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmFwaS5iaXNtYW9wZXJhdGlvbi5pZC9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTQwMDU2NiwiZXhwIjoxNDk1NDYwNTY2LCJuYmYiOjE0OTU0MDA1NjYsImp0aSI6IjlnMnV1MjBqaFJyNm9zMVoiLCJzdWIiOjJ9.y-LDXa2vjsFeBTAynw-IjR_ETbD6jSDNKMWwNPn6-J4";
+    private static final String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmFwaS5iaXNtYW9wZXJhdGlvbi5pZC9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTQ2MzY3MywiZXhwIjoxNDk1NTIzNjczLCJuYmYiOjE0OTU0NjM2NzMsImp0aSI6IkNHclVOUFdNY3Q2TXprZDYiLCJzdWIiOjZ9.7bVkzdxaZlrclX1FgXswtNrwOoHgpxQH7LSDBDNm7GE";
 
 
     public static GitApiInterface getClient(){
@@ -89,11 +89,18 @@ public class RestClient {
         @POST("/public/Order/TambahOrder")
         Call<APITambahOrder> order(@Field("id_pengajar") String idpengajar, @Field("id_murid") String idmurid);
 
+//        @Headers("Authorization: "+token)
+//        @GET("/public/Order/ListPengajar")
+//        Call<APIOrderData> orderdetil(@Query("id_murid")int idmurid);
+
         @Headers("Authorization: "+token)
-        @GET("/public/Pengajar/ListPengajar")
-        Call<APIGuruData> orderdetil(@Query("id_murid")int idmurid);
+        @GET("/public/Order/ListPengajar")
+        Call<APIOrderListPengajar> orderdetil(@Query("id_murid")int idmurid);
 
-
+        @FormUrlEncoded
+        @Headers("Authorization: "+token)
+        @POST("public/Order/Deal")
+        Call<APIDealOrder> dealorder(@Field("id_order") String idorder);
 
     }
 }

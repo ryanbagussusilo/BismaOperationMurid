@@ -7,9 +7,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/waterfall"
-    tools:context="hackfest_bismaoperation.com.hackfest_bismaoperation.Activity.DetilGuruOrderActivity">
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="hackfest_bismaoperation.com.hackfest_bismaoperation.Activity.DetilGuruOrderWithPriceActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -164,6 +167,34 @@
             android:enabled="false" />
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="835dp"
+        android:id="@+id/view20">
+        <EditText android:id="@+id/tv_jam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jam Belajar"
+            android:clickable="false"
+            android:textColor="#000000"
+            android:enabled="false" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="885dp"
+        android:id="@+id/view21">
+        <EditText android:id="@+id/tv_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Total Pembayaran"
+            android:clickable="false"
+            android:textColor="#000000"
+            android:enabled="false" />
+    </android.support.design.widget.TextInputLayout>
+
     <ImageView
         android:layout_width="170dp"
         android:layout_height="170dp"
@@ -178,21 +209,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deal"
-        android:id="@+id/btnDeal"
-        android:layout_marginTop="50dp"
+        android:text="Bayar"
+        android:id="@+id/btnPay"
+        android:layout_marginTop="150dp"
         android:layout_below="@+id/view9"
         android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Batal"
-        android:textColor="#000000"
-        android:id="@+id/btnBatal"
-        android:layout_alignBottom="@+id/btnDeal"
-        android:layout_alignParentEnd="true" />
-
 
 </RelativeLayout>
 </ScrollView>

@@ -1,7 +1,6 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Ryan Bagus Susilo on 5/12/2017.
@@ -12,7 +11,7 @@ public class APIMuridData  implements Serializable {
      * status : true
      * status_code : 200
      * message : Login Berhasil
-     * respon : {"id":1,"nama_depan":"babar","nama_belakang":"sar","tempat_lahir":"rumah sakit","alamat":"babarsari yogya","telepon":"1253456","kelamin":"cowok sejati","tanggal_lahir":"2017-05-01","email":"dfgh@dfgh.com","longitude":"80854","latitude":"85543"}
+     * respon : {"id":1,"nama_depan":"babar","nama_belakang":"sar","tempat_lahir":"rumah sakit","alamat":"babarsari yogya","telepon":"1253456","kelamin":"cowok sejati","tanggal_lahir":"0000-00-00","email":"dfgh@dfgh.com","longitude":"80854","latitude":"85543","profil":"http://www.bisma.bluecrawler.com/public/image/murid/deletepost.png"}
      */
 
     private boolean status;
@@ -61,13 +60,14 @@ public class APIMuridData  implements Serializable {
          * alamat : babarsari yogya
          * telepon : 1253456
          * kelamin : cowok sejati
-         * tanggal_lahir : 2017-05-01
+         * tanggal_lahir : 0000-00-00
          * email : dfgh@dfgh.com
          * longitude : 80854
          * latitude : 85543
+         * profil : http://www.bisma.bluecrawler.com/public/image/murid/deletepost.png
          */
 
-        private Integer id;
+        private int id;
         private String nama_depan;
         private String nama_belakang;
         private String tempat_lahir;
@@ -78,12 +78,13 @@ public class APIMuridData  implements Serializable {
         private String email;
         private String longitude;
         private String latitude;
+        private String profil;
 
-        public Integer getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+        public void setId(int id) {
             this.id = id;
         }
 
@@ -165,6 +166,14 @@ public class APIMuridData  implements Serializable {
 
         public void setLatitude(String latitude) {
             this.latitude = latitude;
+        }
+
+        public String getProfil() {
+            return profil;
+        }
+
+        public void setProfil(String profil) {
+            this.profil = profil;
         }
     }
 }

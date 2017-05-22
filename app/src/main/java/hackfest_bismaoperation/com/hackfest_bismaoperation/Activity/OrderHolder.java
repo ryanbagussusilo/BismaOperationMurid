@@ -33,7 +33,18 @@ public class OrderHolder extends RecyclerView.ViewHolder {
 
     public OrderHolder(View view){
         super(view);
-       // tv_idpengajarO=(TextView) view.findViewById(R.id.)
+        tv_idpengajarO=(TextView) view.findViewById(R.id.tv_ido);
+        this.tv_namadepanO = (TextView) view.findViewById(R.id.tv_namabelakango);
+        this.tv_idpengajarO=(TextView)view.findViewById(R.id.tv_id);
+    //    tv_namabelakangO=(TextView)view.findViewById(R.id.input_namabelakang);
+        tv_telponO=(TextView)view.findViewById(R.id.tv_tlp);
+        tv_emailO=(TextView)view.findViewById(R.id.tv_email);
+        tv_tanggallahirO=(TextView)view.findViewById(R.id.txtTanggalLahir);
+        tv_tempatlahirO=(TextView)view.findViewById(R.id.tv_tempatlahir);
+        tv_jeniskelaminO=(TextView)view.findViewById(R.id.tv_jeniskelamin);
+        tv_hargaO=(TextView)view.findViewById(R.id.tv_harga);
+        tv_alamat=(TextView)view.findViewById(R.id.txtAlamat);
+
     }
 
 }

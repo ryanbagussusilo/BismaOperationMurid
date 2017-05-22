@@ -18,7 +18,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
+
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderListPengajar;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
 import retrofit.Call;
@@ -31,10 +32,10 @@ public class ListOrderActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Toolbar toolbar;
-    private Call<APIGuruData> callGuru;
+    private Call<APIOrderListPengajar> callGuru;
     private RestClient.GitApiInterface service;
 
-    private ArrayList<APIGuruData.ResponBean.DataBean> GuruItems = new ArrayList<APIGuruData.ResponBean.DataBean>();
+    private ArrayList<APIOrderListPengajar.ResponBean> GuruItems = new ArrayList<APIOrderListPengajar.ResponBean>();
     private Integer id;
     private String namadepan;
     private String namabelakang;
@@ -57,7 +58,7 @@ public class ListOrderActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         rvView.setLayoutManager(layoutManager);
         rvView.setLayoutManager(layoutManager);
-        adapter = new RecycleViewOrderAdapter(ListOrderActivity.this, GuruItems);
+//        adapter = new RecycleViewOrderAdapter(ListOrderActivity.this, GuruItems);
         rvView.setAdapter(adapter);
         Bundle b=getIntent().getExtras();
         id=b.getInt("idmurid");
@@ -71,8 +72,6 @@ public class ListOrderActivity extends AppCompatActivity {
         alamatmurid=b.getString("alamatmurid");
 
         fetchData();
-
-
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
@@ -128,23 +127,23 @@ public class ListOrderActivity extends AppCompatActivity {
 
         service = RestClient.getClient();
         callGuru = service.orderdetil(id);
-        callGuru.enqueue(new Callback<APIGuruData>() {
+        callGuru.enqueue(new Callback<APIOrderListPengajar>() {
             @Override
-            public void onResponse(Response<APIGuruData> response) {
+            public void onResponse(Response<APIOrderListPengajar> response) {
                 Log.d("ListGuruFetching", "Status Code = " + response.code());
                 if (response.isSuccess()) {
                     // request successful (status code 200, 201)
-                    APIGuruData result = response.body();
+                    APIOrderListPengajar result = response.body();
                     Log.d("ListGuruFetching", "response = " + new Gson().toJson(result));
                     if (result != null) {
 
                         GuruItems.clear();
 
-                        List<APIGuruData.ResponBean.DataBean> ResponseItems = response.body().getRespon().getData();
+                        List<APIOrderListPengajar.ResponBean> ResponseItems = result.getRespon();
 
                         if(ResponseItems!=null)
                         {
-                            for (APIGuruData.ResponBean.DataBean Responitem : ResponseItems) {
+                            for (APIOrderListPengajar.ResponBean Responitem : ResponseItems) {
                                 GuruItems.add(Responitem);
                                 adapter.notifyDataSetChanged();
                             }

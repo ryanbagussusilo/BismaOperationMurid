@@ -21,7 +21,6 @@ public class SplashActivity extends AppCompatActivity {
 
         View easySplashScreenView = new EasySplashScreen(SplashActivity.this)
                 .withFullScreen()
-                .withTargetActivity(LoginActivity.class)
                // .withSplashTimeOut(4000)
                 .withBackgroundResource(android.R.color.white)
                 .withHeaderText("")

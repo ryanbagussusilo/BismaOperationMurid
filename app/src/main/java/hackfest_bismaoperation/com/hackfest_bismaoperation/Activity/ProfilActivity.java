@@ -1,5 +1,6 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
 public class ProfilActivity extends ActionBarActivity implements AbsListView.OnScrollListener {
@@ -49,12 +52,16 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
     private String alamatmurid;
     private  Intent intent;
     private TextView txtnamadepan,txtnamabelakang,txttempatlahir,txttanggallahir,txtjeniskelamin,txtnomortlp,txtemailmurid,txtalamatmurid;
+    SessionManager sessions;
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profils);
+
+        sessions = new SessionManager(this);
 
         Bundle b=getIntent().getExtras();
         id=b.getString("idmurid");
@@ -66,6 +73,8 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
         nomortlp=b.getString("nomortlp");
         emailmurid=b.getString("emailmurid");
         alamatmurid=b.getString("alamatmurid");
+
+
 
 
         initMeasure();
@@ -149,14 +158,15 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
     private void initListView() {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 1; i++) {
-            data.add("Nama Depan              :"+namadepan);
-            data.add("Nama Belakang         :"+namabelakang);
-            data.add("Tempatlahir                :"+tempatlahir);
-            data.add("Tanggal Lahir             :"+tanggallahir);
-            data.add("Jenis Kelamin            :"+jeniskelamin);
-            data.add("Nomor Telepon          :"+nomortlp);
-            data.add("Email                           :"+emailmurid);
-            data.add("Alamat                        :"+alamatmurid);
+            data.add("Nama Depan              :" + sessions.getUserDetails().get(SessionManager.KEY_NAMA_DEPAN));
+            data.add("Nama Belakang         :"+ sessions.getUserDetails().get(SessionManager.KEY_NAMA_BELAKANG));
+            data.add("Tempatlahir                :"+ sessions.getUserDetails().get(SessionManager.KEY_TEMPAT_LAHIR));
+            data.add("Tanggal Lahir             :"+ sessions.getUserDetails().get(SessionManager.KEY_TANGGAL_LAHIR));
+            data.add("Jenis Kelamin            :"+ sessions.getUserDetails().get(SessionManager.KEY_KELAMIN));
+            data.add("Nomor Telepon          :"+ sessions.getUserDetails().get(SessionManager.KEY_TELEPON));
+            data.add("Email                           :"+ sessions.getUserDetails().get(SessionManager.KEY_EMAIL));
+            data.add("Alamat                        :"+ sessions.getUserDetails().get(SessionManager.KEY_ALAMAT));
+            data.add("Profil                        :"+ sessions.getUserDetails().get(SessionManager.KEY_PROFIL));
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.activity_list_item, android.R.id.text1, data);
         listView.setAdapter(adapter);
@@ -165,6 +175,9 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
     private void initListViewHeader() {
         View headerContainer = LayoutInflater.from(this).inflate(R.layout.header, listView, false);
         headerBg = (ImageView) headerContainer.findViewById(R.id.img_header_bg);
+        Picasso.with(context).load(sessions.getUserDetails().get(SessionManager.KEY_PROFIL)).into(headerBg);
+      //  Log.d("Cek Profil", sessions.getUserDetails().get(SessionManager.KEY_PROFIL));
+        Log.d("LoginActivity", "Status Code = " + sessions.getUserDetails().get(SessionManager.KEY_NAMA_DEPAN));
 
         listView.addHeaderView(headerContainer);
     }

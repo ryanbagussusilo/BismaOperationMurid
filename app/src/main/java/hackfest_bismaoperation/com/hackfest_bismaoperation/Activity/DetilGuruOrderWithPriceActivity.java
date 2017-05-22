@@ -11,13 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIDealOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
@@ -26,17 +24,17 @@ import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 
-public class DetilGuruOrderActivity extends AppCompatActivity implements View.OnClickListener {
+public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btndeal, btnbatal;
+    Button btnbayar;
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
-    private String namaDepan,harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat,status;
-    private String nomorTlp,foto;
+    private String namaDepan, harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat, status;
+    private String nomorTlp, foto;
 
-    private Call<APIDealOrder> callOrder;
+    private Call<APITambahOrder> callOrder;
     private String idmurid;
-    private int  idguru;
+    private int idguru;
     LinearLayout view1;
     ListGuruActivity lgactivity;
     //ImageView img;
@@ -57,17 +55,15 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
     private int maxY;
     ImageView profil;
     SessionManager sessions;
-    EditText txtnama,txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId,txtMatapelajaran;
-
+    EditText txtnama, txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId, txtMatapelajaran;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detil_guru_order);
+        setContentView(R.layout.activity_detil_guru_order_with_price);
 
-        btndeal = (Button) findViewById(R.id.btnDeal);
-        btnbatal = (Button) findViewById(R.id.btnBatal);
+        btnbayar = (Button) findViewById(R.id.btnPay);
         txtnama = (EditText) findViewById(R.id.tv_name);
         txttlp = (EditText) findViewById(R.id.tv_phone);
         txtjk = (EditText) findViewById(R.id.tv_gender);
@@ -76,9 +72,9 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
         txttgllahir = (EditText) findViewById(R.id.tv_dateborn);
         tempatLahir = (EditText) findViewById(R.id.tv_placeborn);
         txtAlamat = (EditText) findViewById(R.id.tv_address);
-        txtMatapelajaran=(EditText) findViewById(R.id.tv_mapel);
-        txtharga=(EditText) findViewById(R.id.tv_price);
-        profil=(ImageView) findViewById(R.id.tv_photo);
+        txtMatapelajaran = (EditText) findViewById(R.id.tv_mapel);
+        txtharga = (EditText) findViewById(R.id.tv_price);
+        profil = (ImageView) findViewById(R.id.tv_photo);
         sessions = new SessionManager(this);
         // img=(ImageView)findViewById(R.id.img1);
 
@@ -115,9 +111,9 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
 //        });
 //
 
-        btndeal.setOnClickListener(this);
+        btnbayar.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
-        idmurid=sessions.getUserDetails().get(SessionManager.KEY_USERID);
+        idmurid = sessions.getUserDetails().get(SessionManager.KEY_USERID);
         idguru = b.getInt("id");
         namaDepan = b.getString("nama");
         namaBelakang = b.getString("namabelakang");
@@ -127,11 +123,11 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
         tanggallahir = b.getString("tanggallahir");
         tempatlahir = b.getString("tempatlahir");
         email = b.getString("email");
-        status=b.getString("status");
-        harga=b.getString("harga");
-        foto=b.getString("profil");
+        status = b.getString("status");
+        harga = b.getString("harga");
+        foto = b.getString("profil");
 
-        Toast.makeText(getBaseContext(),idguru+" Login "+Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), idguru + " Login " + Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
@@ -147,10 +143,10 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
     }
 
     public void onClick(View v) {
-        if (v == btndeal) {
+        if (v == btnbayar) {
 
 
-            final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderActivity.this, R.style.ProgressDialog);
+            final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Order Guru..");
             progressDialog.show();
@@ -158,23 +154,22 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
             // TODO: Implement your own signup logic here.
 
 
-
             service = RestClient.getClient();
 
-//            callOrder = service.dealorder(id_order);
-            callOrder.enqueue(new Callback<APIDealOrder>() {
+            callOrder = service.order(String.valueOf(idguru), idmurid);
+            callOrder.enqueue(new Callback<APITambahOrder>() {
                 @Override
-                public void onResponse(Response<APIDealOrder> response) {
+                public void onResponse(Response<APITambahOrder> response) {
                     Log.d("Register2", "Status Code = " + response.code());
                     if (response.isSuccess()) {
                         // request successful (status code 200, 201)
-                        APIDealOrder result = response.body();
+                        APITambahOrder result = response.body();
                         Log.d("Register2", "response = " + new Gson().toJson(result));
                         if (result != null) {
                             Toast.makeText(getBaseContext(), "Berhasil Memesan Guru", Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
                             finishAffinity();
-                            Intent intent = new Intent(DetilGuruOrderActivity.this ,ListGuruActivity.class);
+                            Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListGuruActivity.class);
                             startActivity(intent);
                         }
 
@@ -197,7 +192,7 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
             Intent intent = new Intent(this, PopUpOrderActivity.class);
             Bundle extras = new Bundle();
             extras.putString("nomortlp", nomorTlp);
-            extras.putString("idmurid",idmurid);
+            extras.putString("idmurid", idmurid);
             extras.putInt("id", idguru);
             intent.putExtras(extras);
             startActivity(intent);

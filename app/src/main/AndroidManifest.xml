@@ -34,7 +34,8 @@
         <activity android:name=".Activity.ProfilActivity" />
         <activity android:name=".Activity.Testing" />
         <activity android:name=".Activity.ListOrderActivity" />
-        <activity android:name=".Activity.DetilGuruOrderActivity"></activity>
+        <activity android:name=".Activity.DetilGuruOrderActivity" />
+        <activity android:name=".Activity.DetilGuruOrderWithPriceActivity"></activity>
     </application>
 
 </manifest>

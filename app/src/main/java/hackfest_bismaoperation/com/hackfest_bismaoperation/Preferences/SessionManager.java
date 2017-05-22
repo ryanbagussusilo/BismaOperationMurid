@@ -3,6 +3,7 @@ package hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -37,9 +38,10 @@ public class SessionManager {
     public static final String KEY_TEMPAT_LAHIR = "tampat_lahir";
     public static final String KEY_TANGGAL_LAHIR = "tanggal_lahir";
     public static final String KEY_TELEPON = "telepn";
-    public static final String KEY_KELAMIN = "kelmain";
+    public static final String KEY_KELAMIN = "kelamin";
     public static final String KEY_ALAMAT = "alamat";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_PROFIL = "profil";
     //END USER-DATA
 
     // Constructor
@@ -55,9 +57,8 @@ public class SessionManager {
     public void createLoginSession(APIMuridData user) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
-
         // Storing  in pref
-        editor.putString(KEY_USERID, user.getRespon().getId().toString());
+        editor.putString(KEY_USERID, String.valueOf(user.getRespon().getId()));
         editor.putString(KEY_NAMA_DEPAN, user.getRespon().getNama_depan());
         editor.putString(KEY_NAMA_BELAKANG, user.getRespon().getNama_belakang());
         editor.putString(KEY_TEMPAT_LAHIR, user.getRespon().getTempat_lahir());
@@ -66,6 +67,7 @@ public class SessionManager {
         editor.putString(KEY_KELAMIN, user.getRespon().getKelamin());
         editor.putString(KEY_ALAMAT, user.getRespon().getAlamat());
         editor.putString(KEY_EMAIL, user.getRespon().getEmail());
+        editor.putString(KEY_PROFIL, user.getRespon().getProfil());
 
         // commit changes
         editor.commit();
@@ -108,6 +110,7 @@ public class SessionManager {
         user.put(KEY_KELAMIN, pref.getString(KEY_KELAMIN, null));
         user.put(KEY_ALAMAT, pref.getString(KEY_ALAMAT, null));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
+        user.put(KEY_PROFIL, pref.getString(KEY_PROFIL, null));
         // return user
         return user;
     }
