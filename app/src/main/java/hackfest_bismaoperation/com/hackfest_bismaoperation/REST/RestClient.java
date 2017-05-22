@@ -15,6 +15,7 @@ import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBaseResponse
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -86,7 +87,7 @@ public class RestClient {
         @FormUrlEncoded
         @Headers("Authorization: "+token)
         @POST("/public/Order/TambahOrder")
-        Call<APIOrderData> order(@Field("id_pengajar") String idpengajar, @Field("id_murid") String idmurid);
+        Call<APITambahOrder> order(@Field("id_pengajar") String idpengajar, @Field("id_murid") String idmurid);
 
         @Headers("Authorization: "+token)
         @GET("/public/Pengajar/ListPengajar")

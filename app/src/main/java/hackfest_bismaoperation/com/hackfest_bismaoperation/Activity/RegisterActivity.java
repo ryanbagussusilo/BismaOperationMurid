@@ -193,9 +193,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             emailmurid.setError(null);
         }
 
-
-
-
         if (namadepan.getText().toString().isEmpty()) {
             namadepan.setError("Nama Depan tidak boleh kosong");
             valid = false;

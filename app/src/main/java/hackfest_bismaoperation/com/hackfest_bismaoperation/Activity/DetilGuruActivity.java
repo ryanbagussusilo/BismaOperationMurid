@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
@@ -34,7 +35,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
     private String namaDepan,harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat,status;
     private String nomorTlp,foto;
 
-    private Call<APIOrderData> callOrder;
+    private Call<APITambahOrder> callOrder;
     private String idmurid;
     private int  idguru;
     LinearLayout view1;
@@ -159,13 +160,13 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
             service = RestClient.getClient();
 
             callOrder = service.order(String.valueOf(idguru),idmurid);
-            callOrder.enqueue(new Callback<APIOrderData>() {
+            callOrder.enqueue(new Callback<APITambahOrder>() {
                 @Override
-                public void onResponse(Response<APIOrderData> response) {
+                public void onResponse(Response<APITambahOrder> response) {
                     Log.d("Register2", "Status Code = " + response.code());
                     if (response.isSuccess()) {
                         // request successful (status code 200, 201)
-                        APIOrderData result = response.body();
+                        APITambahOrder result = response.body();
                         Log.d("Register2", "response = " + new Gson().toJson(result));
                         if (result != null) {
                             Toast.makeText(getBaseContext(), "Berhasil Memesan Guru", Toast.LENGTH_LONG).show();
