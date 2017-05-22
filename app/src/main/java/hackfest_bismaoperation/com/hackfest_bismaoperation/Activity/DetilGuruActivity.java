@@ -127,7 +127,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         harga=b.getString("harga");
         foto=b.getString("profil");
 
-//        Toast.makeText(getBaseContext(),idguru+" Login "+idmurid, Toast.LENGTH_LONG).show();
+       Toast.makeText(getBaseContext(),idguru+" Login "+Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
@@ -158,7 +158,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
 
             service = RestClient.getClient();
 
-            callOrder = service.order(idguru,Integer.parseInt(idmurid));
+            callOrder = service.order(String.valueOf(idguru),idmurid);
             callOrder.enqueue(new Callback<APIOrderData>() {
                 @Override
                 public void onResponse(Response<APIOrderData> response) {
@@ -185,13 +185,10 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
 
                 @Override
                 public void onFailure(Throwable t) {
-                    Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Gagal Memesan Guru1", Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                 }
             });
-
-
-
 
 
             Intent intent = new Intent(this, PopUpOrderActivity.class);
@@ -201,10 +198,6 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
             extras.putInt("id", idguru);
             intent.putExtras(extras);
             startActivity(intent);
-
-
-            //id guru dapet
-
 
         }
 

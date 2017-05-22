@@ -85,8 +85,8 @@ public class RestClient {
 
         @FormUrlEncoded
         @Headers("Authorization: "+token)
-        @POST("/api/index.php/Murid/order")
-        Call<APIOrderData> order(@Field("id_pengajar") int idpengajar, @Field("id_murid") int idmurid);
+        @POST("/public/Order/TambahOrder")
+        Call<APIOrderData> order(@Field("id_pengajar") String idpengajar, @Field("id_murid") String idmurid);
 
         @Headers("Authorization: "+token)
         @GET("/public/Pengajar/ListPengajar")

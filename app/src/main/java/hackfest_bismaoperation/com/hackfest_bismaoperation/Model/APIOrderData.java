@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Ryan Bagus Susilo on 5/13/2017.
  */
-public class APIOrderData extends APIBaseResponse implements Serializable {
+public class APIOrderData  implements Serializable {
 
 
     /**
