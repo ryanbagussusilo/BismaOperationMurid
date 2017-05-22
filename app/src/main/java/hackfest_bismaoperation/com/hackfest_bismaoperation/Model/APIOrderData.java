@@ -20,7 +20,7 @@ public class APIOrderData extends APIBaseResponse implements Serializable {
     @SerializedName("status")
     private boolean statusX;
     private int status_code;
-    private List<ResponBean> respon;
+    private List<OrderResponBean> respon;
 
     public boolean isStatusX() {
         return statusX;
@@ -38,15 +38,15 @@ public class APIOrderData extends APIBaseResponse implements Serializable {
         this.status_code = status_code;
     }
 
-    public List<ResponBean> getRespon() {
+    public List<OrderResponBean> getRespon() {
         return respon;
     }
 
-    public void setRespon(List<ResponBean> respon) {
+    public void setRespon(List<OrderResponBean> respon) {
         this.respon = respon;
     }
 
-    public static class ResponBean {
+    public static class OrderResponBean {
         /**
          * id : 1
          * id_pengajar : 1

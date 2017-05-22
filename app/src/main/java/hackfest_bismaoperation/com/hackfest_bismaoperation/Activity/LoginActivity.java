@@ -15,7 +15,9 @@ import com.google.gson.Gson;
 
 import java.util.Date;
 
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
 import retrofit.Call;
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
     EditText txtusername;
     EditText txtpassword;
+    SessionManager sessions;
 
     private static final String TAG = "LoginActivity";
     @Override
@@ -41,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.btn_login);
         txtusername=(EditText) findViewById(R.id.input_username);
         txtpassword=(EditText) findViewById(R.id.input_password);
+
+        sessions = new SessionManager(this);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
 
@@ -95,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("LoginActivity", "response = " + new Gson().toJson(result));
 
                     if (returnresponse.equalsIgnoreCase("Login Berhasil")) {
-                        Integer idMurid = result.getRespon().getId();
+                        /*Integer idMurid = result.getRespon().getId();
                         Log.d("LoginActivity", "response = " + new Gson().toJson(idMurid));
                         String nama=result.getRespon().getNama_depan();
                         String namabelakang=result.getRespon().getNama_belakang();
@@ -130,6 +135,14 @@ public class LoginActivity extends AppCompatActivity {
                         txtpassword.setText("");
                         txtpassword.clearFocus();
                         txtusername.clearFocus();
+                        progressDialog.dismiss();
+                        */
+
+                        Log.d("LoginActivity", "response = " + new Gson().toJson(result));
+                        sessions.createLoginSession(result);
+                        Toast.makeText(getBaseContext(),result.getRespon().getId()+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
+                        startActivity(intent);
                         progressDialog.dismiss();
                     }
                     else {

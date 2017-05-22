@@ -1,9 +1,11 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,13 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderData;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 
+import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
 import retrofit.Call;
-
+import retrofit.Callback;
+import retrofit.Response;
 
 
 public class DetilGuruActivity extends AppCompatActivity implements View.OnClickListener {
@@ -50,7 +56,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
     private volatile boolean loaded = false;
     private int maxY;
     ImageView profil;
-
+    SessionManager sessions;
     TextView txtnama,txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId,txtMatapelajaran;
 
     @Override
@@ -69,7 +75,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         txtMatapelajaran=(TextView) findViewById(R.id.txtMataPelajaran);
         txtharga=(TextView) findViewById(R.id.txtHarga);
         profil=(ImageView) findViewById(R.id.profildetil);
-
+        sessions = new SessionManager(this);
         // img=(ImageView)findViewById(R.id.img1);
 
 //        gbr = (ImageView) findViewById(R.id.insgbr);
@@ -107,7 +113,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
 
         btnorder.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
-        idmurid=b.getString("idmurid");
+        idmurid=sessions.getUserDetails().get(SessionManager.KEY_USERID);
         idguru = b.getInt("id");
         namaDepan = b.getString("nama");
         namaBelakang = b.getString("namabelakang");
@@ -121,7 +127,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         harga=b.getString("harga");
         foto=b.getString("profil");
 
-        Toast.makeText(getBaseContext(),idguru+" Login "+idmurid, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(),idguru+" Login "+idmurid, Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
@@ -141,50 +147,51 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         if (v == btnorder) {
 
 
-//            final ProgressDialog progressDialog = new ProgressDialog(DetilGuruActivity.this, R.style.ProgressDialog);
-//            progressDialog.setIndeterminate(true);
-//            progressDialog.setMessage("Order Guru..");
-//            progressDialog.show();
-//
-//            // TODO: Implement your own signup logic here.
-//            int idPengajarS=idguru;
-//            int idMuridS=lgactivity.getIdmurid1();
-//
-//
-//            service = RestClient.getClient();
-//
-//            callOrder = service.order(idPengajarS,idMuridS);
-//            callOrder.enqueue(new Callback<APIOrderData>() {
-//                @Override
-//                public void onResponse(Response<APIOrderData> response) {
-//                    Log.d("Register2", "Status Code = " + response.code());
-//                    if (response.isSuccess()) {
-//                        // request successful (status code 200, 201)
-//                        APIOrderData result = response.body();
-//                        Log.d("Register2", "response = " + new Gson().toJson(result));
-//                        if (result != null) {
-//                            Toast.makeText(getBaseContext(), "Berhasil Memesan Guru", Toast.LENGTH_LONG).show();
-//                            progressDialog.dismiss();
-//                            finishAffinity();
-//                            Intent intent = new Intent(DetilGuruActivity.this ,ListGuruActivity.class);
-//                            startActivity(intent);
-//                        }
-//
-//                    } else {
-//                        // response received but request not successful (like 400,401,403 etc)
-//                        //Handle errors
-//                        Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
-//                        progressDialog.dismiss();
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Throwable t) {
-//                    Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
-//                    progressDialog.dismiss();
-//                }
-//            });
-//        }
+            final ProgressDialog progressDialog = new ProgressDialog(DetilGuruActivity.this, R.style.ProgressDialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Order Guru..");
+            progressDialog.show();
+
+            // TODO: Implement your own signup logic here.
+
+
+
+            service = RestClient.getClient();
+
+            callOrder = service.order(idguru,Integer.parseInt(idmurid));
+            callOrder.enqueue(new Callback<APIOrderData>() {
+                @Override
+                public void onResponse(Response<APIOrderData> response) {
+                    Log.d("Register2", "Status Code = " + response.code());
+                    if (response.isSuccess()) {
+                        // request successful (status code 200, 201)
+                        APIOrderData result = response.body();
+                        Log.d("Register2", "response = " + new Gson().toJson(result));
+                        if (result != null) {
+                            Toast.makeText(getBaseContext(), "Berhasil Memesan Guru", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                            finishAffinity();
+                            Intent intent = new Intent(DetilGuruActivity.this ,ListGuruActivity.class);
+                            startActivity(intent);
+                        }
+
+                    } else {
+                        // response received but request not successful (like 400,401,403 etc)
+                        //Handle errors
+                        Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                }
+            });
+
+
+
 
 
             Intent intent = new Intent(this, PopUpOrderActivity.class);

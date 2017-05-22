@@ -19,6 +19,7 @@ import java.util.List;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.Guru;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
 import retrofit.Call;
@@ -46,6 +47,7 @@ public class ListGuruActivity extends AppCompatActivity {
     private String alamatmurid;
     private  Intent intent;
     Bundle extras;
+    SessionManager sessions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +61,23 @@ public class ListGuruActivity extends AppCompatActivity {
         adapter = new RecycleViewAdapter(ListGuruActivity.this, GuruItems);
         rvView.setAdapter(adapter);
         fetchData();
+        sessions = new SessionManager(this);
+     //   Bundle b=getIntent().getExtras();
 
-        Bundle b=getIntent().getExtras();
-        id=b.getInt("idmurid");
-        namadepan=b.getString("namadepan");
-        namabelakang=b.getString("namabelakang");
-        tempatlahir=b.getString("tempatlahir");
-        tanggallahir=b.getString("tanggallahir");
-        jeniskelamin=b.getString("jeniskelamin");
-        nomortlp=b.getString("nomortlp");
-        emailmurid=b.getString("emailmurid");
-        alamatmurid=b.getString("alamatmurid");
+        Log.d("LoginActivity", "Status Code = " + sessions.getUserDetails().get(SessionManager.KEY_EMAIL));
+
+//        id=b.getInt("idmurid");
+//        namadepan=b.getString("namadepan");
+//        namabelakang=b.getString("namabelakang");
+//        tempatlahir=b.getString("tempatlahir");
+//        tanggallahir=b.getString("tanggalla" +
+//                "" +
+//                "" +
+//                "hir");
+//        jeniskelamin=b.getString("jeniskelamin");
+//        nomortlp=b.getString("nomortlp");
+//        emailmurid=b.getString("emailmurid");
+//        alamatmurid=b.getString("alamatmurid");
 
 
 
@@ -88,15 +96,15 @@ public class ListGuruActivity extends AppCompatActivity {
 
                             case R.id.action_schedules:
                                 extras = new Bundle();
-                                extras.putInt("idmurid",id);
-                                extras.putString("namadepan",namadepan);
-                                extras.putString("namabelakang",namabelakang);
-                                extras.putString("tempatlahir",tempatlahir);
-                                extras.putString("tanggallahir",tanggallahir);
-                                extras.putString("jeniskelamin",jeniskelamin);
-                                extras.putString("nomorlp",nomortlp);
-                                extras.putString("emailmurid",emailmurid);
-                                extras.putString("alamatmurid",alamatmurid);
+//                                extras.putInt("idmurid",id);
+//                                extras.putString("namadepan",namadepan);
+//                                extras.putString("namabelakang",namabelakang);
+//                                extras.putString("tempatlahir",tempatlahir);
+//                                extras.putString("tanggallahir",tanggallahir);
+//                                extras.putString("jeniskelamin",jeniskelamin);
+//                                extras.putString("nomorlp",nomortlp);
+//                                extras.putString("emailmurid",emailmurid);
+//                                extras.putString("alamatmurid",alamatmurid);
                                 intent = new Intent(ListGuruActivity.this, ListOrderActivity.class);
                                 intent.putExtras(extras);
                                 startActivity(intent);
@@ -104,15 +112,15 @@ public class ListGuruActivity extends AppCompatActivity {
 
                             case R.id.action_music:
                                 extras = new Bundle();
-                                extras.putInt("idmurid",id);
-                                extras.putString("namadepan",namadepan);
-                                extras.putString("namabelakang",namabelakang);
-                                extras.putString("tempatlahir",tempatlahir);
-                                extras.putString("tanggallahir",tanggallahir);
-                                extras.putString("jeniskelamin",jeniskelamin);
-                                extras.putString("nomorlp",nomortlp);
-                                extras.putString("emailmurid",emailmurid);
-                                extras.putString("alamatmurid",alamatmurid);
+//                                extras.putInt("idmurid",id);
+//                                extras.putString("namadepan",namadepan);
+//                                extras.putString("namabelakang",namabelakang);
+//                                extras.putString("tempatlahir",tempatlahir);
+//                                extras.putString("tanggallahir",tanggallahir);
+//                                extras.putString("jeniskelamin",jeniskelamin);
+//                                extras.putString("nomorlp",nomortlp);
+//                                extras.putString("emailmurid",emailmurid);
+//                                extras.putString("alamatmurid",alamatmurid);
                                 intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
                                 intent.putExtras(extras);
                                 startActivity(intent);

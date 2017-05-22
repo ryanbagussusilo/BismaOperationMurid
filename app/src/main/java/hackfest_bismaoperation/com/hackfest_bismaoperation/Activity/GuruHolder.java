@@ -26,6 +26,8 @@ public class GuruHolder extends RecyclerView.ViewHolder{
      TextView tv_harga;
      RelativeLayout item;
      ImageView foto;
+    TextView foto2;
+
 
     public GuruHolder(View view)
     {
@@ -43,5 +45,6 @@ public class GuruHolder extends RecyclerView.ViewHolder{
         this.tv_harga=(TextView) view.findViewById(R.id.tv_harga);
         this.item = (RelativeLayout) view.findViewById(R.id.itemGuru);
         this.foto = (ImageView) view.findViewById(R.id.icon);
+        this.foto2 = (TextView) view.findViewById(R.id.tv_temp);
     }
 }

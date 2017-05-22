@@ -152,5 +152,18 @@
         android:textSize="16sp"
         android:visibility="invisible"/>
 
+    <TextView
+        android:id="@+id/tv_temp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toRightOf="@id/icon"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"/>
+
 
 </RelativeLayout>

@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -55,6 +58,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
         mainHolder.tv_jeniskelamin.setText(guru.getKelamin());
         mainHolder.tv_namabelakang.setText(guru.getNama_belakang());
         mainHolder.tv_harga.setText(guru.getHarga());
+        mainHolder.foto2.setText(guru.getProfil());
         Picasso.with(context).load(guru.getProfil()).into(mainHolder.foto);
 
         namabelakang=guru.getNama_belakang();
@@ -75,7 +79,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
                 extras.putString("tempatlahir",mainHolder.tv_tempatlahir.getText().toString());
                 extras.putString("jeniskelamin",mainHolder.tv_jeniskelamin.getText().toString());
                 extras.putString("namabelakang",mainHolder.tv_namabelakang.getText().toString());
-                extras.putString("profil",mainHolder.foto.toString());
+                extras.putString("profil",mainHolder.foto2.getText().toString());
+//                extras.putString("profil",mainHolder.foto.toString());
+
+                Log.d("LoginActivity", "response >>>= " + mainHolder.foto2.toString());
                 Intent intent = new Intent(context, DetilGuruActivity.class);
                 intent.putExtras(extras);
                 context.startActivity(intent);
