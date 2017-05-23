@@ -67,6 +67,7 @@ public class RecycleViewOrderWithPriceAdapter extends RecyclerView.Adapter<GuruH
                 extras.putString("tempatlahir",mainHolder.tv_tempatlahir.getText().toString());
                 extras.putString("jeniskelamin",mainHolder.tv_jeniskelamin.getText().toString());
                 extras.putString("namabelakang",mainHolder.tv_namabelakang.getText().toString());
+                extras.putString("matapelajaran",mainHolder.tv_namabelakang.getText().toString());
                 Intent intent = new Intent(context, DetilGuruOrderWithPriceActivity.class);
                 intent.putExtras(extras);
                 context.startActivity(intent);

@@ -1,6 +1,7 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,8 +70,8 @@ public class APIOrderListPengajar implements Serializable{
         private int id;
         private String id_murid;
         private String status;
-        private Object tanggal;
-        private Object jam;
+        private Date tanggal;
+        private Integer jam;
         private String total_biaya;
         private String created_at;
         private String updated_at;
@@ -100,19 +101,19 @@ public class APIOrderListPengajar implements Serializable{
             this.status = status;
         }
 
-        public Object getTanggal() {
+        public Date getTanggal() {
             return tanggal;
         }
 
-        public void setTanggal(Object tanggal) {
+        public void setTanggal(Date tanggal) {
             this.tanggal = tanggal;
         }
 
-        public Object getJam() {
+        public Integer getJam() {
             return jam;
         }
 
-        public void setJam(Object jam) {
+        public void setJam(Integer jam) {
             this.jam = jam;
         }
 
@@ -188,12 +189,12 @@ public class APIOrderListPengajar implements Serializable{
             private String email;
             private String username;
             private String password;
-            private Object longitude;
-            private Object latitude;
+            private String longitude;
+            private String latitude;
             private String harga;
             private String billing;
-            private Object riwayat_pendidikan;
-            private Object mata_pelajaran;
+            private String riwayat_pendidikan;
+            private String mata_pelajaran;
             private String created_at;
             private String updated_at;
 
@@ -309,19 +310,19 @@ public class APIOrderListPengajar implements Serializable{
                 this.password = password;
             }
 
-            public Object getLongitude() {
+            public String getLongitude() {
                 return longitude;
             }
 
-            public void setLongitude(Object longitude) {
+            public void setLongitude(String longitude) {
                 this.longitude = longitude;
             }
 
-            public Object getLatitude() {
+            public String getLatitude() {
                 return latitude;
             }
 
-            public void setLatitude(Object latitude) {
+            public void setLatitude(String latitude) {
                 this.latitude = latitude;
             }
 
@@ -341,19 +342,19 @@ public class APIOrderListPengajar implements Serializable{
                 this.billing = billing;
             }
 
-            public Object getRiwayat_pendidikan() {
+            public String getRiwayat_pendidikan() {
                 return riwayat_pendidikan;
             }
 
-            public void setRiwayat_pendidikan(Object riwayat_pendidikan) {
+            public void setRiwayat_pendidikan(String riwayat_pendidikan) {
                 this.riwayat_pendidikan = riwayat_pendidikan;
             }
 
-            public Object getMata_pelajaran() {
+            public String getMata_pelajaran() {
                 return mata_pelajaran;
             }
 
-            public void setMata_pelajaran(Object mata_pelajaran) {
+            public void setMata_pelajaran(String mata_pelajaran) {
                 this.mata_pelajaran = mata_pelajaran;
             }
 

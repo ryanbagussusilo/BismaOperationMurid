@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Helper.ToStringConverter;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBaseResponse;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBayar;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIDealOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
@@ -25,6 +26,7 @@ import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 
@@ -95,7 +97,12 @@ public class RestClient {
 
         @Headers("Authorization: "+token)
         @GET("/public/Order/ListPengajar")
-        Call<APIOrderListPengajar> orderdetil(@Query("id_murid")int idmurid);
+        Call<APIOrderListPengajar> orderdetil(@Query("id_murid") int idmurid);
+
+        @FormUrlEncoded
+        @Headers("Authorization: "+token)
+        @POST("public/Order/Pembayaran")
+        Call<APIBayar> bayar(@Field("id_order") String idorder);
 
         @FormUrlEncoded
         @Headers("Authorization: "+token)

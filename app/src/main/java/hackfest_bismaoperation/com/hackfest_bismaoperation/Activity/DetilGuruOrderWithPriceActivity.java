@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBayar;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
@@ -29,10 +30,11 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
     Button btnbayar;
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
-    private String namaDepan, harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat, status;
+    private String namaDepan, harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat, status, matapelajaran;
     private String nomorTlp, foto;
+    private Integer idorder;
 
-    private Call<APITambahOrder> callOrder;
+    private Call<APIBayar> callOrder;
     private String idmurid;
     private int idguru;
     LinearLayout view1;
@@ -56,6 +58,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
     ImageView profil;
     SessionManager sessions;
     EditText txtnama, txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId, txtMatapelajaran;
+
 
 
     @Override
@@ -114,7 +117,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         btnbayar.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
         idmurid = sessions.getUserDetails().get(SessionManager.KEY_USERID);
-        idguru = b.getInt("id");
+        idorder = b.getInt("id");
         namaDepan = b.getString("nama");
         namaBelakang = b.getString("namabelakang");
         nomorTlp = b.getString("nomortlp");
@@ -126,8 +129,9 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         status = b.getString("status");
         harga = b.getString("harga");
         foto = b.getString("profil");
+        matapelajaran = b.getString("matapelajaran");
 
-        Toast.makeText(getBaseContext(), idguru + " Login " + Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(), idguru + " Login " + Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
@@ -137,7 +141,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         txtEmail.setText(email);
         txtAlamat.setText(alamat);
         tempatLahir.setText(tempatlahir);
-        txtMatapelajaran.setText(status);
+        txtMatapelajaran.setText(matapelajaran);
         txtharga.setText(harga);
         Picasso.with(this).load(foto).into(profil);
     }
@@ -156,18 +160,19 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
 
             service = RestClient.getClient();
 
-            callOrder = service.order(String.valueOf(idguru), idmurid);
-            callOrder.enqueue(new Callback<APITambahOrder>() {
+            callOrder = service.bayar(String.valueOf(idorder));
+
+            callOrder.enqueue(new Callback<APIBayar>() {
                 @Override
-                public void onResponse(Response<APITambahOrder> response) {
+                public void onResponse(Response<APIBayar> response) {
                     Log.d("Register2", "Status Code = " + response.code());
                     if (response.isSuccess()) {
                         // request successful (status code 200, 201)
-                        APITambahOrder result = response.body();
+                        APIBayar result = response.body();
                         Log.d("Register2", "response = " + new Gson().toJson(result));
                         if (result != null) {
-                            Toast.makeText(getBaseContext(), "Berhasil Memesan Guru", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
+                            Toast.makeText(getBaseContext(), "Berhasil Membayar Guru", Toast.LENGTH_LONG).show();
+//                            progressDialog.dismiss();
                             finishAffinity();
                             Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListGuruActivity.class);
                             startActivity(intent);

@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.squareup.picasso.Picasso;
@@ -56,6 +57,7 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
     private Context context;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +65,17 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
 
         sessions = new SessionManager(this);
 
-        Bundle b=getIntent().getExtras();
-        id=b.getString("idmurid");
-        namadepan=b.getString("namadepan");
-        namabelakang=b.getString("namabelakang");
-        tempatlahir=b.getString("tempatlahir");
-        tanggallahir=b.getString("tanggallahir");
-        jeniskelamin=b.getString("jeniskelamin");
-        nomortlp=b.getString("nomortlp");
-        emailmurid=b.getString("emailmurid");
-        alamatmurid=b.getString("alamatmurid");
+//        Bundle b=getIntent().getExtras();
+//        id=b.getString("idmurid");
+//        namadepan=b.getString("namadepan");
+//        namabelakang=b.getString("namabelakang");
+//        tempatlahir=b.getString("tempatlahir");
+//        tanggallahir=b.getString("tanggallahir");
+//        jeniskelamin=b.getString("jeniskelamin");
+//        nomortlp=b.getString("nomortlp");
+//        emailmurid=b.getString("emailmurid");
+//        alamatmurid=b.getString("alamatmurid");
+
 
 
 
@@ -109,23 +112,28 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
 
                         switch (item.getItemId()) {
                             case R.id.action_favorites:
+
+//                                Bundle extras = new Bundle();
+//                                extras.putString("idmurid",id);
+//                                extras.putString("namadepan",namadepan);
+//                                extras.putString("namabelakang",namabelakang);
+//                                extras.putString("tempatlahir",tempatlahir);
+//                                extras.putString("tanggallahir",tanggallahir);
+//                                extras.putString("jeniskelamin",jeniskelamin);
+//                                extras.putString("nomorlp",nomortlp);
+//                                extras.putString("emailmurid",emailmurid);
+//                                extras.putString("alamatmurid",alamatmurid);
+//                                intent.putExtras(extras);
                                 intent = new Intent(ProfilActivity.this,ListGuruActivity.class);
-                                Bundle extras = new Bundle();
-                                extras.putString("idmurid",id);
-                                extras.putString("namadepan",namadepan);
-                                extras.putString("namabelakang",namabelakang);
-                                extras.putString("tempatlahir",tempatlahir);
-                                extras.putString("tanggallahir",tanggallahir);
-                                extras.putString("jeniskelamin",jeniskelamin);
-                                extras.putString("nomorlp",nomortlp);
-                                extras.putString("emailmurid",emailmurid);
-                                extras.putString("alamatmurid",alamatmurid);
-                                intent.putExtras(extras);
                                 startActivity(intent);
+
                                 break;
 
 
                             case R.id.action_schedules:
+                                intent = new Intent(ProfilActivity.this, ListOrderActivity.class);
+                                // intent.putExtras(extras);
+                                startActivity(intent);
 
                             break;
                             case R.id.action_music:
@@ -137,6 +145,18 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
                         return true;
                     }
                 });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // Code you want run when activity is clicked
+               sessions.logoutUser();
+                return  true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void initMeasure() {

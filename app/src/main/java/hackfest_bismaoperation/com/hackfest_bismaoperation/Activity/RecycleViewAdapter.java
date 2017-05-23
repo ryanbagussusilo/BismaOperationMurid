@@ -73,7 +73,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
                 extras.putString("status", mainHolder.tvStatus.getText().toString());
                 extras.putString("nomortlp", mainHolder.tv_telpon.getText().toString());
                 extras.putString("harga", mainHolder.tv_harga.getText().toString());
-               // extras.putString("nomortlp",notlp1);
+                // extras.putString("nomortlp",notlp1);
                 extras.putString("email",mainHolder.tv_email.getText().toString());
                 extras.putString("tanggallahir",mainHolder.tv_tanggallahir.getText().toString());
                 extras.putString("tempatlahir",mainHolder.tv_tempatlahir.getText().toString());

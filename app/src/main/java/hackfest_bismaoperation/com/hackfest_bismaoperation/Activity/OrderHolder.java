@@ -14,36 +14,38 @@ import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
  */
 public class OrderHolder extends RecyclerView.ViewHolder {
 
-    TextView tv_idpengajarO;
-    TextView tv_namadepanO;
-    TextView tv_namabelakangO;
-    TextView tv_telponO;
-    TextView tv_emailO;
-    TextView tv_tanggallahirO;
-    TextView tv_tempatlahirO;
-    TextView tv_jeniskelaminO;
-    TextView tv_hargaO;
-    TextView tv_alamat;
-    TextView tv_email;
-    ImageView tv_profil;
-    TextView tv_status;
-    TextView tv_riwayatpendidikan;
-    TextView mata_pelajaran;
+    TextView tvid, tvtit, tvsub, tv_telpon, tv_email, tv_tanggallahir, tv_tempatlahir, tv_jeniskelamin,
+            tv_namabelakang, tv_harga, tv_alamat, foto2, tv_status, tv_title, matapelajaran, id_order;
+
+
+    ImageView foto;
+//    TextView tv_status;
+//    TextView tv_riwayatpendidikan;
+//    TextView mata_pelajaran;
     RelativeLayout item;
 
     public OrderHolder(View view){
         super(view);
-        tv_idpengajarO=(TextView) view.findViewById(R.id.tv_ido);
-        this.tv_namadepanO = (TextView) view.findViewById(R.id.tv_namabelakango);
-        this.tv_idpengajarO=(TextView)view.findViewById(R.id.tv_id);
-    //    tv_namabelakangO=(TextView)view.findViewById(R.id.input_namabelakang);
-        tv_telponO=(TextView)view.findViewById(R.id.tv_tlp);
-        tv_emailO=(TextView)view.findViewById(R.id.tv_email);
-        tv_tanggallahirO=(TextView)view.findViewById(R.id.txtTanggalLahir);
-        tv_tempatlahirO=(TextView)view.findViewById(R.id.tv_tempatlahir);
-        tv_jeniskelaminO=(TextView)view.findViewById(R.id.tv_jeniskelamin);
-        tv_hargaO=(TextView)view.findViewById(R.id.tv_harga);
-        tv_alamat=(TextView)view.findViewById(R.id.txtAlamat);
+
+        this.tvtit = (TextView) view.findViewById(R.id.tv_namabelakango);
+        this.tvid=(TextView)view.findViewById(R.id.tv_ido);
+        tv_namabelakang=(TextView)view.findViewById(R.id.tv_namabelakango);
+        tv_telpon=(TextView)view.findViewById(R.id.tv_tlpo);
+        tv_email=(TextView)view.findViewById(R.id.tv_emailo);
+        tv_tanggallahir=(TextView)view.findViewById(R.id.tv_tanggallahiro);
+        tv_tempatlahir=(TextView)view.findViewById(R.id.tv_tempatlahiro);
+        tv_jeniskelamin=(TextView)view.findViewById(R.id.tv_jeniskelamino);
+        tv_harga=(TextView)view.findViewById(R.id.tv_hargao);
+        tvsub=(TextView)view.findViewById(R.id.tv_subtitleo);
+        item = (RelativeLayout)view.findViewById(R.id.itemOrderGuru);
+        tv_status = (TextView)view.findViewById(R.id.tv_statuso);
+        foto2=(TextView)view.findViewById(R.id.tv_tempo);
+        foto=(ImageView)view.findViewById(R.id.icono);
+        tv_title=(TextView)view.findViewById(R.id.tv_titleo);
+        tv_alamat=(TextView)view.findViewById(R.id.tv_alamato);
+        matapelajaran=(TextView)view.findViewById(R.id.tv_matapelajarano);
+        id_order=(TextView)view.findViewById(R.id.tv_id_ordero);
+      //  tv_alamat=(TextView)view.findViewById(R.id.ala);
 
     }
 

@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtusername;
     EditText txtpassword;
     SessionManager sessions;
-
+    Intent intent;
     private static final String TAG = "LoginActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("LoginActivity", "response = " + new Gson().toJson(result));
 
                     if (returnresponse.equalsIgnoreCase("Login Berhasil")) {
-                        /*Integer idMurid = result.getRespon().getId();
+                        Integer idMurid = result.getRespon().getId();
                         Log.d("LoginActivity", "response = " + new Gson().toJson(idMurid));
                         String nama=result.getRespon().getNama_depan();
                         String namabelakang=result.getRespon().getNama_belakang();
@@ -114,34 +114,34 @@ public class LoginActivity extends AppCompatActivity {
                      //   String longitudemurid=result.getRespon().getLongitude();
                      //   String latitudemurid=result.getRespon().getLatitude();
 
-                        Bundle extras = new Bundle();
-                        extras.putInt("idmurid",idMurid);
-                        extras.putString("namadepan",nama);
-                        extras.putString("namabelakang",namabelakang);
-                        extras.putString("tempatlahir",tempatlahir);
-                        extras.putString("tanggallahir",tanggallahir.toString());
-                        extras.putString("jeniskelamin",jeniskelamin);
-                        extras.putString("nomorlp",nomortlp);
-                        extras.putString("emailmurid",emailmurid);
-                        extras.putString("alamatmurid",alamatmurid);
+//                        Bundle extras = new Bundle();
+//                        extras.putInt("idmurid",idMurid);
+//                        extras.putString("namadepan",nama);
+//                        extras.putString("namabelakang",namabelakang);
+//                        extras.putString("tempatlahir",tempatlahir);
+//                        extras.putString("tanggallahir",tanggallahir.toString());
+//                        extras.putString("jeniskelamin",jeniskelamin);
+//                        extras.putString("nomorlp",nomortlp);
+//                        extras.putString("emailmurid",emailmurid);
+//                        extras.putString("alamatmurid",alamatmurid);
 
 
 
                         Toast.makeText(getBaseContext(),idMurid+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
-                        intent.putExtras(extras);
+                     //   intent.putExtras(extras);
                         startActivity(intent);
                         txtusername.setText("");
                         txtpassword.setText("");
                         txtpassword.clearFocus();
                         txtusername.clearFocus();
                         progressDialog.dismiss();
-                        */
+
 
                         Log.d("LoginActivity", "response = " + new Gson().toJson(result));
                         sessions.createLoginSession(result);
                         Toast.makeText(getBaseContext(),result.getRespon().getId()+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
+                       intent = new Intent(getApplicationContext(), ListGuruActivity.class);
                         startActivity(intent);
                         progressDialog.dismiss();
                     }
@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                         // response received but request not successful (like 400,401,403 etc)
                         //Handle errors
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                         Toast.makeText(getBaseContext(), "Login Gagal", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();

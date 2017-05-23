@@ -62,7 +62,7 @@ public class ListGuruActivity extends AppCompatActivity {
         rvView.setAdapter(adapter);
         fetchData();
         sessions = new SessionManager(this);
-     //   Bundle b=getIntent().getExtras();
+        Bundle b=getIntent().getExtras();
 
         Log.d("LoginActivity", "Status Code = " + sessions.getUserDetails().get(SessionManager.KEY_EMAIL));
 
@@ -95,7 +95,7 @@ public class ListGuruActivity extends AppCompatActivity {
                             break;
 
                             case R.id.action_schedules:
-                                extras = new Bundle();
+                         //       extras = new Bundle();
 //                                extras.putInt("idmurid",id);
 //                                extras.putString("namadepan",namadepan);
 //                                extras.putString("namabelakang",namabelakang);
@@ -106,7 +106,7 @@ public class ListGuruActivity extends AppCompatActivity {
 //                                extras.putString("emailmurid",emailmurid);
 //                                extras.putString("alamatmurid",alamatmurid);
                                 intent = new Intent(ListGuruActivity.this, ListOrderActivity.class);
-                                intent.putExtras(extras);
+                               // intent.putExtras(extras);
                                 startActivity(intent);
                                 break;
 
@@ -130,8 +130,6 @@ public class ListGuruActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
-
     }
 
     public void fetchData()

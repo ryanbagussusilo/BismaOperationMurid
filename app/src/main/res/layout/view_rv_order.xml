@@ -5,10 +5,10 @@
     android:background="#ffffff"
     android:padding="3dp"
     android:layout_marginTop="0dp"
-    android:id="@+id/itemGuru">
+    android:id="@+id/itemOrderGuru">
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/icono"
         android:layout_width="100dp"
         android:layout_height="110dp"
         android:layout_alignParentBottom="true"
@@ -27,7 +27,8 @@
         android:text="Description"
         android:textSize="12sp"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/icon" />
+        android:layout_toEndOf="@+id/icono"
+        android:layout_marginStart="60dp" />
     <TextView
         android:id="@+id/tv_statuso"
         android:layout_width="fill_parent"
@@ -37,132 +38,159 @@
         android:textColor="@android:color/black"
         android:text="Description"
         android:textSize="12sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/icon" />
+        android:layout_alignBottom="@+id/icono"
+        android:layout_alignStart="@+id/tv_subtitleo" />
 
     <TextView
         android:id="@+id/tv_titleo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_alignTop="@+id/tv_tlpo"
+        android:layout_alignStart="@+id/tv_tlpo" />
 
     <TextView
         android:id="@+id/tv_tlpo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_emailo" />
     <TextView
         android:id="@+id/tv_emailo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_tanggallahiro" />
     <TextView
         android:id="@+id/tv_tanggallahiro"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_tempatlahiro" />
 
     <TextView
         android:id="@+id/tv_tempatlahiro"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_jeniskelamino" />
     <TextView
         android:id="@+id/tv_jeniskelamino"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_hargao" />
     <TextView
         android:id="@+id/tv_namabelakango"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_hargao"
+        android:layout_marginStart="23dp" />
     <TextView
         android:id="@+id/tv_ido"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_tempo" />
     <TextView
         android:id="@+id/tv_hargao"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_alignStart="@+id/tv_subtitleo" />
 
     <TextView
         android:id="@+id/tv_tempo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
+
+    <TextView
+        android:id="@+id/tv_alamato"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
+
+    <TextView
+        android:id="@+id/tv_matapelajarano"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
+
+    <TextView
+        android:id="@+id/tv_id_ordero"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
 
 
 </RelativeLayout>

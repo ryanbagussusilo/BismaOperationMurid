@@ -24,6 +24,7 @@ public class GuruHolder extends RecyclerView.ViewHolder{
      TextView tv_jeniskelamin;
      TextView tv_namabelakang;
      TextView tv_harga;
+     TextView matapelajaran;
      RelativeLayout item;
      ImageView foto;
     TextView foto2;
