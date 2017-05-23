@@ -90,8 +90,8 @@ public class ListGuruActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_favorites:
-                            intent = new Intent(ListGuruActivity.this, Testing.class);
-                            startActivity(intent);
+//                            intent = new Intent(ListGuruActivity.this, Testing.class);
+//                            startActivity(intent);
                             break;
 
                             case R.id.action_schedules:

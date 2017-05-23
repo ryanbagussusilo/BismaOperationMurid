@@ -29,7 +29,7 @@ import retrofit.Response;
 
 public class DetilGuruActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnorder;
+    Button btnorder,btntelp;
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
     private String namaDepan,harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat,status;
@@ -65,6 +65,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detil_guru);
         btnorder = (Button) findViewById(R.id.btnOrder);
+
         txtnama = (TextView) findViewById(R.id.txtnama);
         txttlp = (TextView) findViewById(R.id.txtTelefon);
         txtjk = (TextView) findViewById(R.id.txtJenisKelamin);
@@ -113,6 +114,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
 //
 
         btnorder.setOnClickListener(this);
+
         Bundle b = getIntent().getExtras();
         idmurid=sessions.getUserDetails().get(SessionManager.KEY_USERID);
         idguru = b.getInt("id");
@@ -146,7 +148,6 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
 
     public void onClick(View v) {
         if (v == btnorder) {
-
 
             final ProgressDialog progressDialog = new ProgressDialog(DetilGuruActivity.this, R.style.ProgressDialog);
             progressDialog.setIndeterminate(true);
@@ -191,7 +192,8 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
                 }
             });
 
-
+        }
+        else if(v==btntelp){
             Intent intent = new Intent(this, PopUpOrderActivity.class);
             Bundle extras = new Bundle();
             extras.putString("nomortlp", nomorTlp);

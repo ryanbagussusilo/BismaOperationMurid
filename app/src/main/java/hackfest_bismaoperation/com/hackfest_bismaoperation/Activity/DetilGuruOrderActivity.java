@@ -149,7 +149,6 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         if (v == btndeal) {
 
-
             final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderActivity.this, R.style.ProgressDialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Order Guru..");

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -8,166 +12,132 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/material_grey_100">
+    android:background="#00CED1">
 
 
     <Button
         android:id="@+id/btnOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:background="@color/colorBackground"
-        android:text="Order" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtnama"
-        android:textColor="#000000"
-        android:layout_marginTop="139dp"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtTelefon"
-        android:textColor="#000000"
-        android:layout_below="@+id/txtnama"
-        android:layout_alignRight="@+id/btnOrder" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:textColor="#000000"
-        android:id="@+id/txtAlamat"
-        android:layout_below="@+id/txtTempatLahir"
-        android:layout_alignRight="@+id/btnOrder" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama "
-        android:id="@+id/textView6"
-        android:textColor="#000000"
-        android:layout_above="@+id/txtTelefon"
-        android:layout_alignEnd="@+id/textView10" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nomor Telepon"
-        android:textColor="#000000"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/textView6"
+        android:text="Order"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tempat Lahir"
-        android:textColor="#000000"
-        android:id="@+id/textView14"
-        android:layout_below="@+id/textView12"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="190dp"
+        android:id="@+id/view1">
+        <EditText android:id="@+id/txtnama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama lengkap"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView"
-        android:text="Alamat"
-        android:textColor="#000000"
-        android:layout_below="@+id/textView14"
-        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tanggal lahir"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView"
-        android:textColor="#000000"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="260dp"
+        android:id="@+id/view2">
+        <EditText android:id="@+id/txtTelefon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefon"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Jenis Kelamin"
-        android:id="@+id/textView4"
-        android:textColor="#000000"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Email"
-        android:id="@+id/textView5"
-        android:textColor="#000000"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="330dp"
+        android:id="@+id/view3">
+        <EditText android:id="@+id/txtAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alamat"
+            android:textColorHint="#000000"
+            android:clickable="false"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:id="@+id/textView7"
-        android:textColor="#000000"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtTempatLahir"
-        android:textColor="#000000"
-        android:layout_below="@+id/txtTelefon"
-        android:layout_alignRight="@+id/btnOrder" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:textColor="#000000"
-        android:id="@+id/txtTanggalLahir"
-        android:layout_below="@+id/txtAlamat"
-        android:layout_alignRight="@+id/btnOrder" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtJenisKelamin"
-        android:textColor="#000000"
-        android:layout_below="@+id/txtTanggalLahir"
-        android:layout_alignRight="@+id/btnOrder" />
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtEmail"
-        android:textColor="#000000"
-        android:layout_below="@+id/txtJenisKelamin"
-        android:layout_alignRight="@+id/btnOrder" />
+        android:layout_marginTop="400dp"
+        android:id="@+id/view5">
+        <EditText android:id="@+id/txtTempatLahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tempat lahir"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:id="@+id/view6">
+        <EditText android:id="@+id/txtTanggalLahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tanggal lahir"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="540dp"
+        android:id="@+id/view7">
+        <EditText android:id="@+id/txtJenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama lengkap"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="610dp"
+        android:id="@+id/view8">
+        <EditText android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama lengkap"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:enabled="false"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -176,73 +146,80 @@
         android:text="Detil Guru"
         android:textColor="#000000"
         android:id="@+id/textView8"
+        android:textColorHint="#000000"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Mata Pelajaran :"
-        android:textColor="#000000"
-        android:id="@+id/textView9"
-        android:layout_below="@+id/txtEmail" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:textColor="#000000"
-        android:id="@+id/txtMataPelajaran"
-        android:layout_below="@+id/textView9"
-        android:layout_alignStart="@+id/txtEmail"
-        android:layout_marginTop="24dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Harga"
-        android:textColor="#000000"
-        android:id="@+id/textView10"
-        android:layout_below="@+id/txtMataPelajaran"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtHarga"
-        android:textColor="#000000"
-        android:layout_alignTop="@+id/textView10"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginTop="680dp"
+        android:id="@+id/view9">
+        <EditText android:id="@+id/txtMataPelajaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mata Pelajaran"
+            android:clickable="false"
+            android:enabled="false"
+            android:textColorHint="#000000"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Top Up"
-        android:id="@+id/btnTopUp"
-        android:layout_above="@+id/btnOrder"
-        android:layout_alignStart="@+id/txtHarga" />
 
-    <TextView
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="750dp"
+        android:id="@+id/view10">
+        <EditText android:id="@+id/txtHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga per jam"
+            android:clickable="false"
+            android:enabled="false"
+            android:textColorHint="#000000"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="820dp"
+        android:id="@+id/view11">
+        <EditText android:id="@+id/txtSaldo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Saldo"
+            android:clickable="false"
+            android:enabled="false"
+            android:textColorHint="#000000"
+            android:textColor="#000000"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/txtSaldo"
-        android:layout_alignBottom="@+id/btnTopUp"
-        android:layout_toEndOf="@+id/textView7" />
+        android:layout_marginTop="15dp"
+
+        android:id="@+id/view12"></android.support.design.widget.TextInputLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:id="@+id/profildetil"
-        android:padding="60dp"
-        android:layout_above="@+id/textView6"
-        android:layout_toEndOf="@+id/textView4" />
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:layout_marginTop="35dp"
+
+        android:layout_below="@+id/view12"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
+</ScrollView>

@@ -27,7 +27,7 @@ import retrofit.Response;
 
 public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnbayar;
+    Button btnbayar,btnTelp;
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
     private String namaDepan, harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat, status, matapelajaran;
@@ -66,6 +66,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detil_guru_order_with_price);
 
+        btnTelp=(Button) findViewById(R.id.btnTlp);
         btnbayar = (Button) findViewById(R.id.btnPay);
         txtnama = (EditText) findViewById(R.id.tv_name);
         txttlp = (EditText) findViewById(R.id.tv_phone);
@@ -115,6 +116,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
 //
 
         btnbayar.setOnClickListener(this);
+        btnTelp.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
         idmurid = sessions.getUserDetails().get(SessionManager.KEY_USERID);
         idorder = b.getInt("id");
@@ -194,6 +196,8 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
             });
 
 
+        }
+        else if(v==btnTelp) {
             Intent intent = new Intent(this, PopUpOrderActivity.class);
             Bundle extras = new Bundle();
             extras.putString("nomortlp", nomorTlp);
@@ -201,8 +205,8 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
             extras.putInt("id", idguru);
             intent.putExtras(extras);
             startActivity(intent);
-
         }
+
 
     }
 }
