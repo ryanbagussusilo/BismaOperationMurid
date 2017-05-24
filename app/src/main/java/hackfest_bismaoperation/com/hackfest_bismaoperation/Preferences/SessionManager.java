@@ -11,7 +11,7 @@ import hackfest_bismaoperation.com.hackfest_bismaoperation.Activity.LoginActivit
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
 
 /**
- * Created by 高橋六羽 on 2016/03/11.
+ * Created by Ryan Bagus Susilo on 5/12/2017.
  */
 public class SessionManager {
     SharedPreferences pref;

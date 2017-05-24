@@ -19,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         sessions = new SessionManager(this);
 
+
         View easySplashScreenView = new EasySplashScreen(SplashActivity.this)
                 .withFullScreen()
                // .withSplashTimeOut(4000)
