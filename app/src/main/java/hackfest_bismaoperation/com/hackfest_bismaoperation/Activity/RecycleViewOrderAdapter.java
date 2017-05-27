@@ -57,6 +57,7 @@ public class RecycleViewOrderAdapter extends RecyclerView.Adapter<OrderHolder>{
         final OrderHolder mainHolder = holder;
 
         //mainHolder.tvid.setText(String.valueOf(guru.getId()));
+
         mainHolder.tvtit.setText(guru.getId_pengajar().get(0).getNama_depan());
         mainHolder.tvsub.setText(guru.getId_pengajar().get(0).getAlamat());
         mainHolder.tv_status.setText(guru.getId_pengajar().get(0).getStatus());
@@ -72,6 +73,10 @@ public class RecycleViewOrderAdapter extends RecyclerView.Adapter<OrderHolder>{
         Picasso.with(context).load(guru.getId_pengajar().get(0).getProfil()).into(mainHolder.foto);
         mainHolder.tv_title.setText(guru.getId_pengajar().get(0).getNama_depan());
         mainHolder.id_order.setText(String.valueOf(guru.getId()));
+        mainHolder.tv_totalharga.setText(guru.getTotal_biaya());
+        mainHolder.tv_jambelajar.setText(String.valueOf(guru.getJam()));
+        mainHolder.tv_tanggalOrder.setText(guru.getTanggal());
+        mainHolder.tv_statusOrder.setText(guru.getStatus());
 
         namabelakang=guru.getId_pengajar().get(0).getNama_belakang();
 
@@ -93,6 +98,10 @@ public class RecycleViewOrderAdapter extends RecyclerView.Adapter<OrderHolder>{
                 extras.putString("namabelakang",mainHolder.tv_namabelakang.getText().toString());
                 extras.putString("matapelajaran",mainHolder.matapelajaran.getText().toString());
                 extras.putString("profil",mainHolder.foto2.getText().toString());
+                extras.putString("totalharga",mainHolder.tv_totalharga.getText().toString());
+                extras.putString("jambelajar",mainHolder.tv_jambelajar.getText().toString());
+                extras.putString("tanggalorder",mainHolder.tv_tanggalOrder.getText().toString());
+                extras.putString("statusorder",mainHolder.tv_statusOrder.getText().toString());
 //                extras.putString("profil",mainHolder.foto.toString());
 
                 Log.d("LoginActivity", "response >>>= " + mainHolder.foto2.toString());

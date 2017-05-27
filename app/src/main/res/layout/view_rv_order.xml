@@ -194,5 +194,51 @@
         android:layout_alignTop="@+id/tv_titleo"
         android:layout_toEndOf="@+id/icono" />
 
+    <TextView
+    android:id="@+id/tv_totalhargao"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignWithParentIfMissing="true"
+    android:gravity="center_vertical"
+    android:text="Example application"
+    android:textSize="16sp"
+    android:visibility="invisible"
+    android:layout_alignTop="@+id/tv_titleo"
+    android:layout_toEndOf="@+id/icono" />
+
+    <TextView
+        android:id="@+id/tv_totaljamo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
+    <TextView
+        android:id="@+id/tv_tanggalordero"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
+    <TextView
+        android:id="@+id/tv_statusorder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/tv_titleo"
+        android:layout_toEndOf="@+id/icono" />
+
 
 </RelativeLayout>

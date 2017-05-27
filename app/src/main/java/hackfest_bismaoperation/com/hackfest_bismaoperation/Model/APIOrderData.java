@@ -3,6 +3,7 @@ package hackfest_bismaoperation.com.hackfest_bismaoperation.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,7 +64,7 @@ public class APIOrderData  implements Serializable {
         private String id_murid;
         @SerializedName("status")
         private String statusX;
-        private Object tanggal;
+        private String tanggal;
         private Object jam;
         private String created_at;
         private String updated_at;
@@ -100,11 +101,11 @@ public class APIOrderData  implements Serializable {
             this.statusX = statusX;
         }
 
-        public Object getTanggal() {
+        public String getTanggal() {
             return tanggal;
         }
 
-        public void setTanggal(Object tanggal) {
+        public void setTanggal(String tanggal) {
             this.tanggal = tanggal;
         }
 

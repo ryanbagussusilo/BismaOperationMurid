@@ -36,8 +36,8 @@ import retrofit.http.Query;
 public class RestClient {
     private static GitApiInterface gitApiInterface;
 //    private static String baseUrl = "http://bisma.bluecrawler.com" ;
-    private static String baseUrl = "http://api.bismaoperation.id" ;
-    private static final String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmFwaS5iaXNtYW9wZXJhdGlvbi5pZC9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTUzMjM0MiwiZXhwIjoxNTI2NjM2MzQyLCJuYmYiOjE0OTU1MzIzNDIsImp0aSI6InRqWWN5Qng0M0RDenNjbUwiLCJzdWIiOjE2fQ.ZJMgdEkwIJ-yK0xxK-ltN_-aD-k9rM57FTw2CpfJm_8";
+    private static String baseUrl = "http://bismaapi.bismaoperation.id" ;
+    private static final String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd3d3LmFwaS5iaXNtYW9wZXJhdGlvbi5pZC9wdWJsaWMvYXV0aC9sb2dpbiIsImlhdCI6MTQ5NTc0MzQ5MiwiZXhwIjoxNTI2ODQ3NDkyLCJuYmYiOjE0OTU3NDM0OTIsImp0aSI6InZBSWVCdHFGNnA4YlNZRlciLCJzdWIiOjE0fQ.A3IbdRAoJy7lsYzTWhn4jKjvQ0-g1T-B5ij7qivGL9Q";
 
 
     public static GitApiInterface getClient(){

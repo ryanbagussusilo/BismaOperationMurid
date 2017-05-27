@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBayar;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIDealOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
@@ -31,10 +32,11 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
     private String namaDepan, harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat, status, matapelajaran;
-    private String nomorTlp, foto;
+    private String nomorTlp, foto,totalharga,jambelajar,tanggalorder,statusorder;
     private Integer idorder;
 
     private Call<APIBayar> callOrder;
+    private Call<APIDealOrder> callOrderDeal;
     private String idmurid;
     private int idguru;
     LinearLayout view1;
@@ -57,7 +59,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
     private int maxY;
     ImageView profil;
     SessionManager sessions;
-    EditText txtnama, txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId, txtMatapelajaran;
+    EditText txtTanggalOrder,txtTotalHarga,txttotaljam,txtnama, txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId, txtMatapelajaran;
 
 
 
@@ -78,42 +80,13 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         txtAlamat = (EditText) findViewById(R.id.tv_address);
         txtMatapelajaran = (EditText) findViewById(R.id.tv_mapel);
         txtharga = (EditText) findViewById(R.id.tv_price);
+        txtTotalHarga=(EditText) findViewById(R.id.tv_totalor);
+        txttotaljam=(EditText) findViewById(R.id.tv_jamor);
+        txtTanggalOrder=(EditText) findViewById(R.id.tv_tanggalorderor);
+
         profil = (ImageView) findViewById(R.id.tv_photo);
         sessions = new SessionManager(this);
-        // img=(ImageView)findViewById(R.id.img1);
 
-//        gbr = (ImageView) findViewById(R.id.insgbr);
-//        gbr.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent(Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-//                startActivityForResult(it, 101);
-//            }
-//        });
-//
-//        colourBins = new int[NUMBER_OF_COLOURS][];
-//        for (int i = 0; i < NUMBER_OF_COLOURS; i++) {
-//            colourBins[i] = new int[SIZE];
-//        }
-//
-//        Button upload = (Button) findViewById(R.id.btnSelect);
-//        upload.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                // TODO Auto-generated method stub
-//                if (flag) {
-//                    view1.removeAllViews();
-//                }
-//                Intent it = new Intent(Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-//                startActivityForResult(it, 101);
-//                flag = true;
-//
-//            }
-//        });
-//
 
         btnbayar.setOnClickListener(this);
         btnTelp.setOnClickListener(this);
@@ -125,6 +98,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         nomorTlp = b.getString("nomortlp");
         jk = b.getString("jeniskelamin");
         alamat = b.getString("alamat");
+        tanggalorder=b.getString("tanggalorder");
         tanggallahir = b.getString("tanggallahir");
         tempatlahir = b.getString("tempatlahir");
         email = b.getString("email");
@@ -132,6 +106,19 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         harga = b.getString("harga");
         foto = b.getString("profil");
         matapelajaran = b.getString("matapelajaran");
+        jambelajar=b.getString("jambelajar");
+        totalharga=b.getString("totalharga");
+        statusorder=b.getString("statusorder");
+
+        if(statusorder.equalsIgnoreCase("Order")){
+            btnbayar.setEnabled(false);
+            btnbayar.setText("Deal");
+        }else if(statusorder.equalsIgnoreCase("Verifikasi")){
+            btnbayar.setEnabled(true);
+            btnbayar.setText("Deal");
+        }else if(statusorder.equalsIgnoreCase("Deal")){
+            btnbayar.setText("Bayar");
+        }
 
 //        Toast.makeText(getBaseContext(), idguru + " Login " + Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
 
@@ -145,57 +132,108 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         tempatLahir.setText(tempatlahir);
         txtMatapelajaran.setText(matapelajaran);
         txtharga.setText(harga);
+        txtTotalHarga.setText(totalharga);
+        txttotaljam.setText(jambelajar);
+        txtTanggalOrder.setText(tanggalorder);
         Picasso.with(this).load(foto).into(profil);
     }
 
+
     public void onClick(View v) {
         if (v == btnbayar) {
+            if(txttotaljam.getText().toString().equalsIgnoreCase("null"))
+            {
+                btnbayar.setEnabled(false);
+            }
+            if(btnbayar.getText().toString().equalsIgnoreCase("Bayar")) {
+                final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Membayar Guru..");
+                progressDialog.show();
+
+                // TODO: Implement your own signup logic here.
 
 
-            final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Order Guru..");
-            progressDialog.show();
+                service = RestClient.getClient();
 
-            // TODO: Implement your own signup logic here.
+                callOrder = service.bayar(String.valueOf(idorder));
 
+                callOrder.enqueue(new Callback<APIBayar>() {
+                    @Override
+                    public void onResponse(Response<APIBayar> response) {
+                        Log.d("Register2", "Status Code = " + response.code());
+                        if (response.isSuccess()) {
+                            // request successful (status code 200, 201)
+                            APIBayar result = response.body();
+                            Log.d("Register2", "response = " + new Gson().toJson(result));
+                            if (result != null) {
+                                Toast.makeText(getBaseContext(), "Berhasil Membayar Guru", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                                finishAffinity();
+                                Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListOrderActivity.class);
+                                startActivity(intent);
+                            }
 
-            service = RestClient.getClient();
-
-            callOrder = service.bayar(String.valueOf(idorder));
-
-            callOrder.enqueue(new Callback<APIBayar>() {
-                @Override
-                public void onResponse(Response<APIBayar> response) {
-                    Log.d("Register2", "Status Code = " + response.code());
-                    if (response.isSuccess()) {
-                        // request successful (status code 200, 201)
-                        APIBayar result = response.body();
-                        Log.d("Register2", "response = " + new Gson().toJson(result));
-                        if (result != null) {
-                            Toast.makeText(getBaseContext(), "Berhasil Membayar Guru", Toast.LENGTH_LONG).show();
-//                            progressDialog.dismiss();
-                            finishAffinity();
-                            Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListGuruActivity.class);
-                            startActivity(intent);
+                        } else {
+                            // response received but request not successful (like 400,401,403 etc)
+                            //Handle errors
+                            Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
                         }
+                    }
 
-                    } else {
-                        // response received but request not successful (like 400,401,403 etc)
-                        //Handle errors
-                        Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Toast.makeText(getBaseContext(), "Berhasil Membayar Guru", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
-                }
+                });
 
-                @Override
-                public void onFailure(Throwable t) {
-                    Toast.makeText(getBaseContext(), "Gagal Memesan Guru1", Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-                }
-            });
+            }
+            else if(btnbayar.getText().toString().equalsIgnoreCase("Deal")){
 
+                final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Deal Guru..");
+                progressDialog.show();
 
+                // TODO: Implement your own signup logic here.
+
+                service = RestClient.getClient();
+
+                callOrderDeal = service.dealorder(String.valueOf(idorder));
+                callOrderDeal.enqueue(new Callback<APIDealOrder>() {
+                    @Override
+                    public void onResponse(Response<APIDealOrder> response) {
+                        Log.d("Register2", "Status Code = " + response.code());
+                        if (response.isSuccess()) {
+                            // request successful (status code 200, 201)
+                            APIDealOrder result = response.body();
+                            Log.d("Register2", "response = " + new Gson().toJson(result));
+                            if (result != null) {
+                                Toast.makeText(getBaseContext(), "Berhasil Deal untuk Memesan Guru Silahkan tekan bayar untuk membayar Guru", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                             //   finishAffinity();
+                               // Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this ,ListGuruActivity.class);
+                                btnbayar.setText("Bayar");
+                              //  startActivity(intent);
+                            }
+
+                        } else {
+                            // response received but request not successful (like 400,401,403 etc)
+                            //Handle errors
+                            Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Toast.makeText(getBaseContext(), "Gagal Memesan Guru1", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                    }
+                });
+            }
         }
         else if(v==btnTelp) {
             Intent intent = new Intent(this, PopUpOrderActivity.class);

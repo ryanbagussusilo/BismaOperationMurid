@@ -47,5 +47,6 @@ public class GuruHolder extends RecyclerView.ViewHolder{
         this.item = (RelativeLayout) view.findViewById(R.id.itemGuru);
         this.foto = (ImageView) view.findViewById(R.id.icon);
         this.foto2 = (TextView) view.findViewById(R.id.tv_temp);
+
     }
 }

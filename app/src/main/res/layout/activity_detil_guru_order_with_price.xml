@@ -185,7 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="835dp"
         android:id="@+id/view20">
-        <EditText android:id="@+id/tv_jam"
+        <EditText android:id="@+id/tv_jamor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Jam Belajar"
@@ -200,10 +200,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="885dp"
         android:id="@+id/view21">
-        <EditText android:id="@+id/tv_total"
+        <EditText android:id="@+id/tv_totalor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Total Pembayaran"
+            android:textColorHint="#000000"
+            android:clickable="false"
+            android:textColor="#000000"
+            android:enabled="false" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="735dp"
+        android:id="@+id/view22">
+        <EditText android:id="@+id/tv_tanggalorderor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tanggal Order"
             android:textColorHint="#000000"
             android:clickable="false"
             android:textColor="#000000"

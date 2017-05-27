@@ -156,8 +156,6 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
 
             // TODO: Implement your own signup logic here.
 
-
-
             service = RestClient.getClient();
 
 //            callOrder = service.dealorder(id_order);
@@ -191,7 +189,6 @@ public class DetilGuruOrderActivity extends AppCompatActivity implements View.On
                     progressDialog.dismiss();
                 }
             });
-
 
             Intent intent = new Intent(this, PopUpOrderActivity.class);
             Bundle extras = new Bundle();

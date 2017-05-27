@@ -70,7 +70,7 @@ public class APIOrderListPengajar implements Serializable{
         private int id;
         private String id_murid;
         private String status;
-        private Date tanggal;
+        private String tanggal;
         private Integer jam;
         private String total_biaya;
         private String created_at;
@@ -101,11 +101,11 @@ public class APIOrderListPengajar implements Serializable{
             this.status = status;
         }
 
-        public Date getTanggal() {
+        public String getTanggal() {
             return tanggal;
         }
 
-        public void setTanggal(Date tanggal) {
+        public void setTanggal(String tanggal) {
             this.tanggal = tanggal;
         }
 

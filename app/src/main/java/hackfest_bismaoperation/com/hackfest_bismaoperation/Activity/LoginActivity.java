@@ -8,14 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-
-import java.util.Date;
-
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
@@ -102,34 +96,10 @@ public class LoginActivity extends AppCompatActivity {
                     if (returnresponse.equalsIgnoreCase("Login Berhasil")) {
                         Integer idMurid = result.getRespon().getId();
                         Log.d("LoginActivity", "response = " + new Gson().toJson(idMurid));
-                        String nama=result.getRespon().getNama_depan();
-                        String namabelakang=result.getRespon().getNama_belakang();
-                        String tempatlahir=result.getRespon().getTempat_lahir();
-                        String tanggallahir=result.getRespon().getTanggal_lahir();
-                        String jeniskelamin=result.getRespon().getKelamin();
-                        String nomortlp=result.getRespon().getTelepon();
-                        String emailmurid=result.getRespon().getEmail();
-                        String alamatmurid=result.getRespon().getAlamat();
-
-                     //   String longitudemurid=result.getRespon().getLongitude();
-                     //   String latitudemurid=result.getRespon().getLatitude();
-
-//                        Bundle extras = new Bundle();
-//                        extras.putInt("idmurid",idMurid);
-//                        extras.putString("namadepan",nama);
-//                        extras.putString("namabelakang",namabelakang);
-//                        extras.putString("tempatlahir",tempatlahir);
-//                        extras.putString("tanggallahir",tanggallahir.toString());
-//                        extras.putString("jeniskelamin",jeniskelamin);
-//                        extras.putString("nomorlp",nomortlp);
-//                        extras.putString("emailmurid",emailmurid);
-//                        extras.putString("alamatmurid",alamatmurid);
-
 
 
                         Toast.makeText(getBaseContext(),idMurid+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), ListGuruActivity.class);
-                     //   intent.putExtras(extras);
                         startActivity(intent);
                         txtusername.setText("");
                         txtpassword.setText("");

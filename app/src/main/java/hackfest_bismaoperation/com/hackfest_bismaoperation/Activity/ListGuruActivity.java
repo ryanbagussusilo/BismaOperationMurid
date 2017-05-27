@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
-import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.Guru;
+
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.R;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient;
@@ -36,15 +36,6 @@ public class ListGuruActivity extends AppCompatActivity {
     private RestClient.GitApiInterface service;
 
     private ArrayList<APIGuruData.ResponBean.DataBean> GuruItems = new ArrayList<APIGuruData.ResponBean.DataBean>();
-    private Integer id;
-    private String namadepan;
-    private String namabelakang;
-    private String tempatlahir;
-    private String tanggallahir;
-    private String jeniskelamin;
-    private String nomortlp;
-    private String emailmurid;
-    private String alamatmurid;
     private  Intent intent;
     Bundle extras;
     SessionManager sessions;
@@ -57,29 +48,11 @@ public class ListGuruActivity extends AppCompatActivity {
         rvView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         rvView.setLayoutManager(layoutManager);
-        rvView.setLayoutManager(layoutManager);
         adapter = new RecycleViewAdapter(ListGuruActivity.this, GuruItems);
         rvView.setAdapter(adapter);
         fetchData();
         sessions = new SessionManager(this);
-        Bundle b=getIntent().getExtras();
-
         Log.d("LoginActivity", "Status Code = " + sessions.getUserDetails().get(SessionManager.KEY_EMAIL));
-
-//        id=b.getInt("idmurid");
-//        namadepan=b.getString("namadepan");
-//        namabelakang=b.getString("namabelakang");
-//        tempatlahir=b.getString("tempatlahir");
-//        tanggallahir=b.getString("tanggalla" +
-//                "" +
-//                "" +
-//                "hir");
-//        jeniskelamin=b.getString("jeniskelamin");
-//        nomortlp=b.getString("nomortlp");
-//        emailmurid=b.getString("emailmurid");
-//        alamatmurid=b.getString("alamatmurid");
-
-
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -90,37 +63,16 @@ public class ListGuruActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_favorites:
-//                            intent = new Intent(ListGuruActivity.this, Testing.class);
-//                            startActivity(intent);
                             break;
 
                             case R.id.action_schedules:
-                         //       extras = new Bundle();
-//                                extras.putInt("idmurid",id);
-//                                extras.putString("namadepan",namadepan);
-//                                extras.putString("namabelakang",namabelakang);
-//                                extras.putString("tempatlahir",tempatlahir);
-//                                extras.putString("tanggallahir",tanggallahir);
-//                                extras.putString("jeniskelamin",jeniskelamin);
-//                                extras.putString("nomorlp",nomortlp);
-//                                extras.putString("emailmurid",emailmurid);
-//                                extras.putString("alamatmurid",alamatmurid);
                                 intent = new Intent(ListGuruActivity.this, ListOrderActivity.class);
-                               // intent.putExtras(extras);
+
                                 startActivity(intent);
                                 break;
 
                             case R.id.action_music:
                                 extras = new Bundle();
-//                                extras.putInt("idmurid",id);
-//                                extras.putString("namadepan",namadepan);
-//                                extras.putString("namabelakang",namabelakang);
-//                                extras.putString("tempatlahir",tempatlahir);
-//                                extras.putString("tanggallahir",tanggallahir);
-//                                extras.putString("jeniskelamin",jeniskelamin);
-//                                extras.putString("nomorlp",nomortlp);
-//                                extras.putString("emailmurid",emailmurid);
-//                                extras.putString("alamatmurid",alamatmurid);
                                 intent = new Intent(ListGuruActivity.this, ProfilActivity.class);
                                 intent.putExtras(extras);
                                 startActivity(intent);
@@ -139,8 +91,6 @@ public class ListGuruActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Mengambil Data Guru...");
         progressDialog.show();
-
-
 
         service = RestClient.getClient();
         callGuru = service.showguru();
