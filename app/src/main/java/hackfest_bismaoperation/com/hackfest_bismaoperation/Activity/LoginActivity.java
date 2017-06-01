@@ -63,7 +63,12 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
-
+    @Override
+    public void onBackPressed()
+    {
+        this.finishAffinity();
+        super.onBackPressed();
+    }
     public void doLogin() {
         Log.d(TAG, "LoginActivity");
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,

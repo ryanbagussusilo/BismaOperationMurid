@@ -3,6 +3,7 @@ package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIBayar;
+import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APICancelOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIDealOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Preferences.SessionManager;
@@ -28,7 +30,7 @@ import retrofit.Response;
 
 public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnbayar,btnTelp;
+    Button btnbayar,btnTelp,btnBtl;
     boolean flag;
     private hackfest_bismaoperation.com.hackfest_bismaoperation.REST.RestClient.GitApiInterface service;
     private String namaDepan, harga, jk, namaBelakang, email, tempatlahir, tanggallahir, alamat, status, matapelajaran;
@@ -37,6 +39,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
 
     private Call<APIBayar> callOrder;
     private Call<APIDealOrder> callOrderDeal;
+    private Call<APICancelOrder> callCancel;
     private String idmurid;
     private int idguru;
     LinearLayout view1;
@@ -61,7 +64,8 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
     SessionManager sessions;
     EditText txtTanggalOrder,txtTotalHarga,txttotaljam,txtnama, txtharga, txttlp, txttgllahir, txtstatus, txtjk, txtnamaDepan, txtEmail, tempatLahir, txtAlamat, txtId, txtMatapelajaran;
 
-
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         setContentView(R.layout.activity_detil_guru_order_with_price);
 
         btnTelp=(Button) findViewById(R.id.btnTlp);
+        btnBtl=(Button) findViewById(R.id.btnBatal);
         btnbayar = (Button) findViewById(R.id.btnPay);
         txtnama = (EditText) findViewById(R.id.tv_name);
         txttlp = (EditText) findViewById(R.id.tv_phone);
@@ -89,6 +94,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
 
 
         btnbayar.setOnClickListener(this);
+        btnBtl.setOnClickListener(this);
         btnTelp.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
         idmurid = sessions.getUserDetails().get(SessionManager.KEY_USERID);
@@ -110,17 +116,20 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         totalharga=b.getString("totalharga");
         statusorder=b.getString("statusorder");
 
+
         if(statusorder.equalsIgnoreCase("Order")){
-            btnbayar.setEnabled(false);
             btnbayar.setText("Deal");
+            btnbayar.setBackground(this.getResources().getDrawable(R.drawable.deal2));
         }else if(statusorder.equalsIgnoreCase("Verifikasi")){
             btnbayar.setEnabled(true);
+            btnbayar.setBackground(this.getResources().getDrawable(R.drawable.deal2));
             btnbayar.setText("Deal");
         }else if(statusorder.equalsIgnoreCase("Deal")){
             btnbayar.setText("Bayar");
+            btnbayar.setBackground(this.getResources().getDrawable(R.drawable.bayar));
+            btnBtl.setEnabled(false);
         }
 
-//        Toast.makeText(getBaseContext(), idguru + " Login " + Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
@@ -136,16 +145,23 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         txttotaljam.setText(jambelajar);
         txtTanggalOrder.setText(tanggalorder);
         Picasso.with(this).load(foto).into(profil);
+
+
+
+
     }
 
+    @Override
 
     public void onClick(View v) {
         if (v == btnbayar) {
             if(txttotaljam.getText().toString().equalsIgnoreCase("null"))
             {
-                btnbayar.setEnabled(false);
+                Toast.makeText(getBaseContext(), "Tunggu Guru Memverifikasi jumlah jam", Toast.LENGTH_LONG).show();
+
             }
             if(btnbayar.getText().toString().equalsIgnoreCase("Bayar")) {
+                btnBtl.setEnabled(false);
                 final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Membayar Guru..");
@@ -177,7 +193,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
                         } else {
                             // response received but request not successful (like 400,401,403 etc)
                             //Handle errors
-                            Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Gagal Membayar Guru", Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
                         }
                     }
@@ -190,7 +206,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
                 });
 
             }
-            else if(btnbayar.getText().toString().equalsIgnoreCase("Deal")){
+            else if(btnbayar.getText().toString().equalsIgnoreCase("Deal")&&!txttotaljam.getText().toString().equalsIgnoreCase("null")){
 
                 final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
                 progressDialog.setIndeterminate(true);
@@ -229,7 +245,7 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
 
                     @Override
                     public void onFailure(Throwable t) {
-                        Toast.makeText(getBaseContext(), "Gagal Memesan Guru1", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "Gagal Memesan Guru", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
                 });
@@ -243,6 +259,52 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
             extras.putInt("id", idguru);
             intent.putExtras(extras);
             startActivity(intent);
+        }
+        else if(v==btnBtl){
+
+            final ProgressDialog progressDialog = new ProgressDialog(DetilGuruOrderWithPriceActivity.this, R.style.ProgressDialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Membatalkan Pesanan Guru..");
+            progressDialog.show();
+
+            // TODO: Implement your own signup logic here.
+
+            service = RestClient.getClient();
+
+            callCancel = service.batal(String.valueOf(idorder));
+
+            callCancel.enqueue(new Callback<APICancelOrder>() {
+                @Override
+                public void onResponse(Response<APICancelOrder> response) {
+                    Log.d("Register2", "Status Code = " + response.code());
+                    if (response.isSuccess()) {
+                        // request successful (status code 200, 201)
+                        APICancelOrder result = response.body();
+                        Log.d("Register2", "response = " + new Gson().toJson(result));
+                        if (result != null) {
+                            Toast.makeText(getBaseContext(), "Berhasil Membatalkan Order", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                            finish();
+                            startActivity(getIntent());
+                            Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListOrderActivity.class);
+                            startActivity(intent);
+                        }
+
+                    } else {
+                        // response received but request not successful (like 400,401,403 etc)
+                        //Handle errors
+                        Toast.makeText(getBaseContext(), "Gagal Membatalkan Order", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Toast.makeText(getBaseContext(), "Berhasil Membatalkan Order", Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                }
+            });
+
         }
 
 

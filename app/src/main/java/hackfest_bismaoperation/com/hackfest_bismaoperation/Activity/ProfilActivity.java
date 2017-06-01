@@ -158,7 +158,12 @@ public class ProfilActivity extends ActionBarActivity implements AbsListView.OnS
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    @Override
+    public void onBackPressed()
+    {
+        this.finishAffinity();
+        super.onBackPressed();
+    }
     private void initMeasure() {
         headerHeight = getResources().getDimension(R.dimen.header_height);
         minHeaderHeight = getResources().getDimension(R.dimen.abc_action_bar_default_height_material);

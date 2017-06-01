@@ -100,4 +100,5 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<GuruHolder> {
         GuruHolder listHolder = new GuruHolder(mainGroup);
         return listHolder;
     }
+
 }

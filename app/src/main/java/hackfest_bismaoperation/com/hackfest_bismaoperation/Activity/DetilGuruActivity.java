@@ -130,7 +130,7 @@ public class DetilGuruActivity extends AppCompatActivity implements View.OnClick
         harga=b.getString("harga");
         foto=b.getString("profil");
 
-       Toast.makeText(getBaseContext(),idguru+" Login "+Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
+       //Toast.makeText(getBaseContext(),idguru+" Login "+Integer.parseInt(idmurid), Toast.LENGTH_LONG).show();
 
 
         txtnama.setText(namaDepan + " " + namaBelakang);
