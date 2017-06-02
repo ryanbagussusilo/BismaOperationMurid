@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Log.d("LoginActivity", "response = " + new Gson().toJson(result));
                         sessions.createLoginSession(result);
+
                         Toast.makeText(getBaseContext(),result.getRespon().getId()+" Login Berhasil sebagai "+username+" Role : Murid", Toast.LENGTH_LONG).show();
                        intent = new Intent(getApplicationContext(), ListGuruActivity.class);
                         startActivity(intent);

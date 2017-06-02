@@ -1,6 +1,9 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -124,6 +127,19 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
             btnbayar.setEnabled(true);
             btnbayar.setBackground(this.getResources().getDrawable(R.drawable.deal2));
             btnbayar.setText("Deal");
+
+            String tittle="Pesan Baru";
+            String subject="Bisma Operation";
+            String body="Order telah di Verifikasi";
+
+            NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Notification notify=new Notification.Builder
+                    (getApplicationContext()).setContentTitle(tittle).setContentText(body).
+                    setContentTitle(subject).setSmallIcon(R.mipmap.bisma1).build();
+
+            notify.flags |= Notification.FLAG_AUTO_CANCEL;
+            notif.notify(0, notify);
+
         }else if(statusorder.equalsIgnoreCase("Deal")){
             btnbayar.setText("Bayar");
             btnbayar.setBackground(this.getResources().getDrawable(R.drawable.bayar));
@@ -145,8 +161,6 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
         txttotaljam.setText(jambelajar);
         txtTanggalOrder.setText(tanggalorder);
         Picasso.with(this).load(foto).into(profil);
-
-
 
 
     }
@@ -185,7 +199,6 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
                             if (result != null) {
                                 Toast.makeText(getBaseContext(), "Berhasil Membayar Guru", Toast.LENGTH_LONG).show();
                                 progressDialog.dismiss();
-                                finishAffinity();
                                 Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListOrderActivity.class);
                                 startActivity(intent);
                             }
@@ -195,6 +208,8 @@ public class DetilGuruOrderWithPriceActivity extends AppCompatActivity implement
                             //Handle errors
                             Toast.makeText(getBaseContext(), "Gagal Membayar Guru", Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
+                            Intent intent = new Intent(DetilGuruOrderWithPriceActivity.this, ListOrderActivity.class);
+                            startActivity(intent);
                         }
                     }
 

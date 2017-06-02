@@ -19,6 +19,7 @@ import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIGuruData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIMuridData;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APIOrderListPengajar;
 import hackfest_bismaoperation.com.hackfest_bismaoperation.Model.APITambahOrder;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -46,7 +47,9 @@ public class RestClient {
 
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
+
             OkHttpClient okClient = new OkHttpClient();
+
             okClient.interceptors().add(new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
@@ -83,7 +86,7 @@ public class RestClient {
                                      @Field("tanggal_lahir") String birthDate,
                                      @Field("email") String email, @Field("username") String username,
                                      @Field("password") String password, @Field("longitude") String longitude,
-                                     @Field("latitude") String latitude);
+                                     @Field("latitude") String latitude,@Field("profil") String profil);
 
 
         @Headers("Authorization: "+token)

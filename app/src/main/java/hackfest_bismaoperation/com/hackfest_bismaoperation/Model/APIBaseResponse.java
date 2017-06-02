@@ -12,13 +12,13 @@ public class APIBaseResponse implements Serializable {
      * status : true
      * status_code : 200
      * message : Register Berhasil
-     * respon : {"nama_depan":"yamaha","nama_belakang":"honda","tempat_lahir":"Solo","telepon":"0889362673","kelamin":"Pria","tanggal_lahir":"1996-10-8","email":"yamaha@yahoo.co.id","alamat":"jln ambar123","longitude":null,"latitude":null,"username":"kaguya","password":"$2y$10$v04let2sc5PP4btq8R3SZOHwaDNQOWwUyi8zSb3LZbH.5pC9VD0Ey","updated_at":"2017-05-21 21:34:38","created_at":"2017-05-21 21:34:38","id":3}
+     * respon : {"nama_depan":"moprh","nama_belakang":"morph","tempat_lahir":"semarang","telepon":"0889362673","kelamin":"Pria","tanggal_lahir":"1996-10-8","email":"ryan2009@yahoo.co.id","alamat":"jln ambar123","longitude":null,"latitude":null,"username":"morph","password":"$2y$10$TkhWguzduBZ7G8a4Por8HeOBKliE71tFZn3rN6VNZdkwLov3bX3i6","profil":"http://bismaapi.bismaoperation.id/public/image/murid/Foto Ryan.jpg","updated_at":"2017-06-01 09:46:38","created_at":"2017-06-01 09:46:38","id":5}
      */
 
     private boolean status;
     private int status_code;
     private String message;
-    private RegisterResponBean respon;
+    private ResponBean respon;
 
     public boolean isStatus() {
         return status;
@@ -44,31 +44,32 @@ public class APIBaseResponse implements Serializable {
         this.message = message;
     }
 
-    public RegisterResponBean getRegisterRespon() {
+    public ResponBean getRespon() {
         return respon;
     }
 
-    public void setRegisterRespon(RegisterResponBean respon) {
+    public void setRespon(ResponBean respon) {
         this.respon = respon;
     }
 
-    public static class RegisterResponBean {
+    public static class ResponBean {
         /**
-         * nama_depan : yamaha
-         * nama_belakang : honda
-         * tempat_lahir : Solo
+         * nama_depan : moprh
+         * nama_belakang : morph
+         * tempat_lahir : semarang
          * telepon : 0889362673
          * kelamin : Pria
          * tanggal_lahir : 1996-10-8
-         * email : yamaha@yahoo.co.id
+         * email : ryan2009@yahoo.co.id
          * alamat : jln ambar123
          * longitude : null
          * latitude : null
-         * username : kaguya
-         * password : $2y$10$v04let2sc5PP4btq8R3SZOHwaDNQOWwUyi8zSb3LZbH.5pC9VD0Ey
-         * updated_at : 2017-05-21 21:34:38
-         * created_at : 2017-05-21 21:34:38
-         * id : 3
+         * username : morph
+         * password : $2y$10$TkhWguzduBZ7G8a4Por8HeOBKliE71tFZn3rN6VNZdkwLov3bX3i6
+         * profil : http://bismaapi.bismaoperation.id/public/image/murid/Foto Ryan.jpg
+         * updated_at : 2017-06-01 09:46:38
+         * created_at : 2017-06-01 09:46:38
+         * id : 5
          */
 
         private String nama_depan;
@@ -83,6 +84,7 @@ public class APIBaseResponse implements Serializable {
         private Object latitude;
         private String username;
         private String password;
+        private String profil;
         private String updated_at;
         private String created_at;
         private int id;
@@ -181,6 +183,14 @@ public class APIBaseResponse implements Serializable {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+
+        public String getProfil() {
+            return profil;
+        }
+
+        public void setProfil(String profil) {
+            this.profil = profil;
         }
 
         public String getUpdated_at() {

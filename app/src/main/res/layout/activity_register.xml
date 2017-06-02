@@ -183,16 +183,41 @@
 
 
     </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imgAttach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle"
+        android:scaleType="center"
+        android:visibility="visible"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/add"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Simpan"
         android:id="@+id/buttonSave"
-        android:layout_marginTop="530dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="130dp"
         android:background="#00FF00"
 
+        android:layout_below="@+id/imgAttach"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambahkan Foto"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
 
 
 </RelativeLayout>

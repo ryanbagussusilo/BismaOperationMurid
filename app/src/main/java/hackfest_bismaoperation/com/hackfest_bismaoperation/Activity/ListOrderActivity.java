@@ -1,6 +1,9 @@
 package hackfest_bismaoperation.com.hackfest_bismaoperation.Activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -56,6 +59,12 @@ public class ListOrderActivity extends AppCompatActivity {
         rvView.setAdapter(adapter);
         sessions = new SessionManager(this);
         fetchData();
+
+
+
+
+
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -135,12 +144,15 @@ public class ListOrderActivity extends AppCompatActivity {
                     Log.d("ListGuruFetching", "response = " + new Gson().toJson(result));
                     if (result != null) {
 
+
+
                         GuruItems.clear();
 
                         List<APIOrderListPengajar.ResponBean> ResponseItems = result.getRespon();
 
                         if(ResponseItems!=null)
                         {
+
                             for (APIOrderListPengajar.ResponBean Responitem : ResponseItems) {
                                 GuruItems.add(Responitem);
                                 adapter.notifyDataSetChanged();
